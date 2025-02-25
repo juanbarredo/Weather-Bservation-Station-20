@@ -175,3 +175,69 @@ SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
 --i imagine the subquery will hadle the odd or even.
 
 --can a subquery have a subquery?
+
+-----------------------------02 24 2025---------------------------------
+
+--ok,
+
+--I am completely lost.
+--I am also excited.
+
+--How can a subquery say if odd or even based on count
+--ok, once I identify whether a field is odd or even.
+--then, how do I pass 
+--I think the special case should be else.
+
+--the special case is the hard one.
+--the hard one is when the count is even.
+
+--then, else.  Just do display the number that lands on the median.
+
+--I am completely lost as to how to do this.
+
+
+--I imagine a subquery to handle the special case.
+
+--let's build just the subquery as the outer query.
+
+--so I need to pass the median when it has to be added and divided by two.
+--how do I do that.
+
+--let me then just divide two numbers by two in tsql
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN
+--	(--WOW, I AM FLOORED.
+
+--I am unsure how to tackle this.
+
+--ok, so I need to first then isolate two values from the same field and add them together.
+
+--how can I isolate on value
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN 
+--	(SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N DESC);--MAN, I AM BURNT.
+	--I HAVE NO IDEA HOW TO PROCEED.
+	--BUT THIS IS HARD STUFF THAT I HAVE TO STICK THROUGH.
+
+	--I NEED to stop and think about how to accomplish this using my current style.
+
+--I need the or I think I want the final or outer query to do the addition and division of the two median values when the field has an even number of rows.
+
+--then that how can I add two items that are indeed in the same field but at different locations.
+--I think there is a way to pass variables but not as fields.
+--i would have to carve out a whole new field.
+--a whole new field with what values?
+--just the median plus 1 or the median minus 1 value?
+--really bad craft.
+
+--I have to visualize this really hard!
+
+--I thkn I have to test how to add different values from the same field.
