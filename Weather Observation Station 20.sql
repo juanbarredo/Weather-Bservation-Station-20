@@ -241,3 +241,50 @@ SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
 --I have to visualize this really hard!
 
 --I thkn I have to test how to add different values from the same field.
+
+-------------------------------------02 25 2025-------------------------------------------------------
+
+--I am making a breakthrough.
+
+--the WHERE clause will just choose or pass the values to sum.  
+--the values to sum and divide by two.
+
+--the WHERE clause just needs to be really good at picking out the details.
+
+--I am really excited to have solved this next possible idea to pursue.
+
+--so, the next step is the to figure out how to select the correct values given that.
+--ok, the where clause is executed ahead of the select statement
+
+--ok,
+--I need to organize the where clause then
+
+--how can I WHERE to get the right values.
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN
+--	(SELECT LAT_N
+--		FROM STATION
+--		WHERE--and this is where I am stuck
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN
+
+--Now I am remembering that I need to figure out how to figure out the even or odd thing.
+--so, this is the exception that I am trying to solve.
+--I have decided that the exception is even because it is more work.
+
+--for now though.
+--i just wnat to get this to be the even
+--i am going to figure out how to select part of the field.
+
+--how can i meaningfully do this?
+--because already I am wanting to come up with the final solution to the WHERE clause.
+
+--I need to make a decision.
+
+--the decision must be something like.
