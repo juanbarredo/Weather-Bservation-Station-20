@@ -288,3 +288,63 @@ SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
 --I need to make a decision.
 
 --the decision must be something like.
+
+--------------------------------------03 02 2025---------------------------------------
+
+--I had an amazing breakthrough yesterday while doing  yoga.
+
+--I realized that I need to see how to get WHERE row_number_column_index IN 
+--or something like that.
+
+--let me see if I can get a query result for the row number alone.
+
+USE Weather_Observation_Station_2;
+SELECT * 
+	FROM STATION;
+
+	--HOLD ON.
+	--is there really not a very simple row_number().
+	--there is.
+	--but it is complicated.
+
+	--the rest of this pomodoro may well be exploring the 
+	--row_number().
+
+USE Weather_Observation_Station_2;
+SELECT ROW_NUMBER() OVER(ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --I feel like this is such a roundabout way of doing a simple pointing to the already existing index row?
+	FROM STATION;
+
+--ok,
+--so now.
+--I need to 
+	--i am now reading about the SELECT -OVER() clause.
+	--I need to learn how to get the over clause.
+	--to define the correct row numbers for the median.
+
+	--but it seems that I only know how to ORDER BY row_name DESC.
+
+	--So, I need to explore it further.
+
+	--I think I am getting the idea to try to PARTITION BY
+
+	--
+
+	USE Weather_Observation_Station_2;
+SELECT ROW_NUMBER() OVER(PARTITION BY 2 ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --PARTITION BY 2 didn't do anything ;_;
+	FROM STATION;
+
+--ok,
+--time to start cloding down.
+
+--but I am ver scared.
+
+--I feel like I am wildly out there.
+
+--so,
+
+--I am looking into PARTITION BY() 
+--I need to let this one simmer.
+--I may need to watch a few videos on it.
+
+--because it feels like PARTITION BY()
+--can be used in some nice math stuff.
