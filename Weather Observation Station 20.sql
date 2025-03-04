@@ -348,3 +348,58 @@ SELECT ROW_NUMBER() OVER(PARTITION BY 2 ORDER BY LAT_N DESC) AS 'LAT_N DESC', LA
 
 --because it feels like PARTITION BY()
 --can be used in some nice math stuff.
+
+---------------------------03 03 2025---------------------------------
+
+--decided to pick up my class book and look into "window functions"
+
+--I found a section titled Window Construct.
+
+--well, it is certainly getting complicated.
+
+--which makes me wonder if I need to get so complicated to solve for the median.
+
+--However, I don't know how else to proceed.
+
+--I have also ran into this OVER() clause before and I just copied/pasted.
+
+--this might be a sign to look into it more.
+
+--that SQL took in new functions.  what does this mean?
+
+--I want to try a super quieck query
+
+USE Weather_Observation_Station_2;
+SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
+	FROM STATION;
+
+	--I got some weird ass answer.
+	--I have no idea what is happening.
+	--however, I have struck gold.
+
+	USE Weather_Observation_Station_2;
+	SELECT SUM(LAT_N)
+		FROM STATION;
+
+		--This is insane.
+
+		--I am unsure how to proceed.
+
+		--I guess I shoudl continue to read the section int he book.
+
+		--but I also want to run around and exclaim success over and over again.
+
+		--I might need to take a month and look at this section in the book.
+
+		--chapter 24.
+
+		--ok,
+		--I may start looking at the first few sections.
+
+		--ok,
+		--everything before extensions to group by.
+
+		--this might help me move towards the machine learning stuff I want to do.
+		--i mean the main thing would be learning how to do more math.
+
+		--linear algebra is right here.
