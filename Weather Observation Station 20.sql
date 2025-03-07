@@ -403,3 +403,20 @@ SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
 		--i mean the main thing would be learning how to do more math.
 
 		--linear algebra is right here.
+-------------------------------------------03 06 2025--------------------------------------------------------------
+--Right!
+
+--I might be starting to plan out the chapter study today.
+
+--But what exactly am I trying to get out of this chapter?
+
+--Learning the OVER() that moves around the data set.
+
+--I am now wondering if I really need this section?
+
+--I know this topic will come up again.  So, why not tackle it right now anyways?
+
+--I think I can only think far enough to want to read this chapter to find out what is going on.
+
+--I will start using the mind mapping software and upload that into the github.
+
