@@ -98,3 +98,17 @@ SELECT *
 --I am unsure how to proceed.
 --in saving the table.
 --I think it is the sample database.
+
+--------------------------03 10 2025-----------------------------------------
+--I suppose that I will either make a new file or just add it here. 
+--this is a notes section?
+
+USE sample;
+SELECT * 
+	FROM department;
+
+	--ok,
+	--I think that I will use this database because this is the database (the sample database) 
+	--where I have saved the other book related tables.
+
+--then I should follow protocol and make a new file.
