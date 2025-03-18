@@ -43,3 +43,71 @@
 --and the average 
 --for the Accounting 
 --and Research Departments.
+
+-------------------------------------------03 17 2025---------------------------------------------
+
+--Ok,
+--I am thinking of cheating and looking at the answer.
+
+--But I also want to work through it honestly.
+
+--I will try to solve it tonight.
+
+--the book doesn't seem to give a general form for the window construct.
+
+--this is very interesting.
+
+--ok,
+--I am getting the format.
+--it is weird that they aren't giving it a general form in the book
+--or in this -to me- reputable website.
+
+--ok.
+
+--the function is SUM(accounting, research) AVG(accounting, research).
+
+--I am completely lost.
+
+--I looked at the answer.
+
+--it is so weird.
+
+--I will copy it below.
+
+USE sample;
+SELECT dept_name, budget,
+	SUM ( emp_cnt ) OVER ( PARTITION BY dept_name ) AS emp_cnt_sum,
+	AVG ( budget ) OVER ( PARTITION BY dept_name ) AS budget_avg
+			FROM project_dept
+				WHERE dept_name IN ('Accounting', 'Research');
+
+				--I'm looking at the answer and it is so complicated.
+				--Really a whole new landscape.
+
+				--I honestly can't even see the answer.
+
+				--I can't make sense of it.
+				--I should start by looking at the *
+USE sample;
+SELECT * 
+	FROM project_dept;
+
+--Using the window construct, 
+--build partitions 
+--according to the values 
+--in the dept_name column.
+
+--I believe that half the battle is knowing the data set.
+--I am able to see the answer better now that I have seen
+--the table "project_dept".
+
+--that is today's lesson.
+--I will begin by using SELECT * FROM table_name.
+
+--ewww
+--my stomach turned to something new in my understanding of SQL
+
+--how the SELECT statement and such is for rows in tables.
+--I got a weird limitation awareness.
+
+--but it is also exciting and I can build on it.
