@@ -111,3 +111,47 @@ SELECT *
 --I got a weird limitation awareness.
 
 --but it is also exciting and I can build on it.
+
+---------------------------03 18 2025----------------------------------------
+
+--so,
+
+--I am going to look and mess around with the window construct.
+
+--I need to break down how it works for me 
+
+--this is weird.
+--I am wondering how to tinker with it.
+
+--let me recopy it.
+
+USE sample;
+SELECT dept_name, budget,
+	SUM ( emp_cnt ) OVER ( PARTITION BY 'Accounting' ) AS emp_cnt_sum,
+	AVG ( budget ) OVER ( PARTITION BY 'Research' ) AS budget_avg
+			FROM project_dept;--ok, I got an asnwer but I am even more confused.
+				--WHERE dept_name IN ('Accounting', 'Research');
+
+				--
+--USE sample;
+--SELECT AVG(Research)
+--	FROM project_dept;
+
+--this is so complex.
+--I keep running into really new things for me that set me back.
+--how 
+
+--I think I just don't like this example.
+--I may have to explore further on my own?
+
+--yeah, the more I re-read the question the more I dislike it.
+--it very vague to me.
+
+USE sample;
+SELECT dept_name,  
+	SUM ( emp_cnt ) OVER ( PARTITION BY dept_name ) AS employee_count_sum,
+	AVG ( budget ) OVER ( PARTITION BY dept_name ) AS budget_average
+	FROM project_dept
+		WHERE dept_name IN ('Accounting', 'Research');
+
+		
