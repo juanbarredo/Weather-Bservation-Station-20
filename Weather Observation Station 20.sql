@@ -420,3 +420,58 @@ SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
 
 --I will start using the mind mapping software and upload that into the github.
 
+---------------------------03 30 2025---------------------------------------
+
+--How about if for now I just focus on counting the rows.
+
+USE Weather_Observation_Station_2;
+SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
+	FROM STATION;
+
+	--Ok,
+	--there are 499 rows when I use COUNT(LAT_N)
+
+	--so,
+	--what now.
+
+	--this is the subquery.
+	--now I need to build the outer query.
+
+	--what do I need to do now.
+	--how do I call up the 1/2 number.
+
+	--let me make a query that gives me the half number count.
+
+USE Weather_Observation_Station_2;
+SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
+	FROM STATION; 
+
+	--So,
+	--I am getting strong where vibes.
+
+	--I need to investigate.
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N-- AS 'THE ACTUAL 1/2 VALUE'
+	FROM STATION
+		WHERE LAT_N =
+		(SELECT COUNT(LAT_N) / 2
+			FROM STATION); 
+			--I see an issue.
+			--the issue is that I am unaware of how to call the index.
+			--does the index have a specific column name?
+
+		--seems a very specific thing I have to do is create an index?
+		--I don't think this will work on the interface of hackerrank.com
+
+		--isn;t there a whole chapter on indexes in the book?
+
+		--I will look at that one next.
+
+
+		--because I am missing how to turn a count into a single value.  
+		--the value that is situated in the indexed spot that is the single value.
+
+		--this might or might not be but I think it is a mobiuos strip.
+
+		--ultimately the table is reinforced politically.
