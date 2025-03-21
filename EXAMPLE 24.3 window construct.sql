@@ -154,4 +154,14 @@ SELECT dept_name,
 	FROM project_dept
 		WHERE dept_name IN ('Accounting', 'Research');
 
+----------------------------03 20 2025----------------------------------------------
+--ok,
+--I am going to move away from window consctruct.
+--I really thought it would yield a good plan
+--but I mainly learned that I am not ready to solve this problem yet.
+
+--I should go back and re-read it.
+
+--How else could I solve it?
+
 		
