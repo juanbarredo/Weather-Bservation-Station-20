@@ -103,3 +103,10 @@
 --all rows are fetched according to their physical memory location.
 
 --This method is less efficient than an index access, as explained next.
+
+-------------------------------------03 30 2025--------------------------------------
+
+--I am now thinking of trying to solve for the median
+--by using IF THEN ELSE statements
+
+--I think I can build the query using the COUNT(column_name) 
