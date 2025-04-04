@@ -108,3 +108,60 @@
 --IF a Boolean Expression,
 --which follows the keyword IF,
 --evaluates to TRUE.
+
+-------------------------------------------04 03 2025----------------------------------------------
+
+--and PROCEDURAL EXTENSIONS
+--that are sent to the Databse Engine for execution 
+--together.
+
+----I am now interested in all of what means or how many are there
+----how many PROCEDURAL EXTENSIONS?
+
+----I will look into this later.
+
+----For now!
+----I am super excited to work on EXAMPLE 8.1
+
+--If the IF statement contains an ELSE statement, 
+--a second group of statements can be executed if the Boolean
+--expressions evaluates to FALSE.
+
+----I guess for now the IF statement is a PROCEDURAL EXTENSION.
+
+USE sample;
+IF ( SELECT COUNT ( * )
+	FROM works_on
+	WHERE project_no = 'p1'
+	GROUP BY project_no ) > 3
+		PRINT 'The number of employees in the project p1 is 4 or more'
+		ELSE BEGIN
+			PRINT 'The following employees work for the project p1'
+			SELECT emp_fname, emp_lname
+			FROM employee, works_on
+			WHERE employee.emp_no = works_on.emp_no
+			AND project_no = 'p1'
+				END
+
+----Such an awesome example.
+----it had a join which I have not been having in my diet.
+
+----love line ELSE BEGIN
+
+--Example 8.1 shows the use of a block inside the IF statement.
+--The Boolean expression in the IF  statement.
+
+--( SELECT COUNT ( * )
+--		FROM works_on
+--			WHERE project_no = 'p1'
+--				GROUP BY project_no ) > 3
+
+--is evaluated to TRUE for the sample database.
+--Therefore, the single PRINT statement in the IF 
+--part is executed.
+--Notice that this example uses a subquery to 
+--return the number of rows
+--(using the COUNT aggregate function)
+--that satisfy the WHERE condition 
+--(PROJECT_NO='P1').
+--the result of Example 8.1 is:
