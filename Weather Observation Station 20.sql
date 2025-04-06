@@ -451,12 +451,12 @@ SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
 
 	--I need to investigate.
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N-- AS 'THE ACTUAL 1/2 VALUE'
-	FROM STATION
-		WHERE LAT_N =
-		(SELECT COUNT(LAT_N) / 2
-			FROM STATION); 
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N-- AS 'THE ACTUAL 1/2 VALUE'
+--	FROM STATION
+--		WHERE LAT_N =
+--		(SELECT COUNT(LAT_N) / 2
+--			FROM STATION); 
 			--I see an issue.
 			--the issue is that I am unaware of how to call the index.
 			--does the index have a specific column name?
@@ -475,3 +475,42 @@ SELECT LAT_N-- AS 'THE ACTUAL 1/2 VALUE'
 		--this might or might not be but I think it is a mobiuos strip.
 
 		--ultimately the table is reinforced politically.
+
+------------------------04 06 2025---------------------------------------
+
+----I belive that I have gained enough roughly to solve for the median.
+
+----I will use procedural language IF.
+
+----let me build the logic for me.
+
+----I need to have an IF that breaks between a count() being even or odd.
+
+----I need to see how to check if a number if even or odd.
+
+----How can I do this?
+
+----I feel like I just don't know.
+
+----I have found a page that explains something that has blown my mind
+
+----but it hinges on knowing long division by hand.
+
+----will this work for me?
+
+--(ID % 2) <> 0
+
+----What is the "<>" operator?
+
+----"<>" means "Not equal to"
+
+--syntaxsql
+--expression <> expression
+
+--pretty straight forward.
+
+--I still am shocked at forgetting the remainder stuff from long division.
+
+--this is the type of stuff that I cannot forget.
+
+--becuase it is coming up.

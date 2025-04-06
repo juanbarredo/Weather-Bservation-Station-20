@@ -165,3 +165,23 @@ IF ( SELECT COUNT ( * )
 --that satisfy the WHERE condition 
 --(PROJECT_NO='P1').
 --the result of Example 8.1 is:
+
+------------------------------04 06 2025--------------------------------
+
+----Back at it.
+
+----Where did I leave off?
+
+----
+
+--NOTE:
+--The ELSE part of the IF statement in Example 8.1 contains two statements:
+--PRINT and SELECT.
+--Therefore,
+--the block with the BEGIN and END statements is required to enclose the two statements.
+--(The PRINT statement is another statement that belongs to procedural statements;
+--it returns a user-defined message).
+
+----I think I have enough to sove the MEDIAN problem.
+
+
