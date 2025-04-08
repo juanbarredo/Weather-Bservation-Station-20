@@ -514,3 +514,75 @@ SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
 --this is the type of stuff that I cannot forget.
 
 --becuase it is coming up.
+
+-------------------------------------04 07 2025------------------------------------------------------
+
+--I will continue and try to solve
+
+--for now, I am going to practice line 501 for my case
+
+--I want to get a nice output and the build upon it.
+
+--USE Weather_Observation_Station_2;
+--SELECT (lat_n % 2)
+--	FROM STATION;
+
+--USE Weather_Observation_Station_2;
+--SELECT *
+--	FROM STATION;
+
+	--ok,
+	--I got an error
+	--I will need to find another way unless I cast it.
+	--I can cast it.
+	--what does the modulo operator work on?
+	--apparently the "numeric" data type.
+
+--ok, let me cast lat_n into the numeric data type
+--this is already taking a twist that I don't care for.
+
+USE Weather_Observation_Station_2;
+SELECT CAST(LAT_N AS numeric) % 2 AS 'CAST ( LAT_N AS numeric ) % 2'
+	FROM STATION;
+
+	--amazing.
+	--it is working.
+
+	--ok,
+
+	--now I need to work on figuring out the next step.
+
+--I believe the next step is going to be to build the count()
+--the count.
+
+--ok, yes.
+--the next step is going to build the part of the query that returns the corresponding value in the count
+--this is where it gets even trickier.
+
+--I am absolutely lost.
+
+--but I have some clues.
+
+--and more importantly,
+--I have the time.
+
+--How can i get WHERE
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N
+	FROM STATION
+	WHERE LAT_N IN 
+	(SELECT COUNT(LAT_N) / 2
+		FROM STATION);
+
+		--Amazing.
+		--I got the expected answer.
+
+		--I got the special case where the median is between two numbers.
+		--well, I built one part of the Boolean expression?
+		--no, this is one part of the IF statement.
+		--yeah. this is going to get funny.
+
+		--ok, I need to think of a way to make a Boolean expression.
+		--not sure how.
+		--but that would be the correct phrasing.
