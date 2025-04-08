@@ -586,3 +586,65 @@ SELECT LAT_N
 		--ok, I need to think of a way to make a Boolean expression.
 		--not sure how.
 		--but that would be the correct phrasing.
+
+------------------------------------04 08 2025-------------------------------------------
+
+--I am super excited to continue.
+
+----ELSE, right?
+
+--I need to make the boolean statement already the general rule.
+
+--in this case, I can just do the odd as the boolean.
+
+--if count.
+
+--wow,
+
+--USE Weather_Observation_Station_2;
+--IF ( SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN 
+--	(SELECT COUNT(LAT_N) / 2
+--		FROM STATION);
+
+--WAIT.
+
+--I need to get the query to return the correct value.
+
+--ok
+
+--i need the subquery to be 
+
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N) /2
+
+--GETTING the correct value is already tied up with whether it is an odd or even.
+
+--well, not here just yet.
+
+--I do need to get into the practice of writting this down.
+
+--let me write a query to get any value in place?
+
+--USE Weather_Observation_Station_2;
+---SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN --I got such an interesting error message.
+	--really learning that i should have expected it.
+	--an aggregate may not appear.
+
+	--I may need to re-read an intro on the WHERE clause?
+
+	--ok, I had a great time exploring.
+
+--next time I need 
+
+--"Msg 147, Level 15, State 1, Line 631
+--An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+
+--to look at the above message again.
+
+--and I need to see how can I call forth an index when there isn't one?
+
+--obviously there is one but why can't i call it forth?
