@@ -648,3 +648,86 @@ SELECT LAT_N
 --and I need to see how can I call forth an index when there isn't one?
 
 --obviously there is one but why can't i call it forth?
+
+-----------------------------------04 10 2025----------------------------
+
+--super excited to get this going.
+
+
+--so, where did I leave off?
+
+--didn't I think up of something to try?
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N 
+--	FROM STATION
+--	WHERE LAT_N IN
+--	(SELECT COUNT(LAT_N)
+
+--I thought this would be an easy step.
+
+--let me look up stuff on INDEX position?
+
+--I read an article on INDEXes that I have bookmarked
+
+--"INDEXING ESSENTIALS IN SQL - ATLASSIAN"
+
+--I learned that I would have to index this. some other way
+
+--how can I use the ID field already.
+
+--I will explore it.
+
+USE Weather_Observation_Station_2;
+SELECT ID
+	FROM STATION
+	ORDER BY ID DESC;
+
+	--ok, 
+	--now I want to look at it further.
+
+	--can I just see if the COUNT(ID) will match up with
+	--an ideal ID that is simply a 1,2, ... number line.
+
+		--so, it will not work.
+
+		--because,
+		--when counting along the ID field.
+		--I am going to be counting but I will not
+		--be able to compare that count to the value assigned
+		--or the value already in the field position.
+		--I run into the same problem.
+
+		--specifically, 
+		--since,
+		--1, 2, 3, 4, 5, 6, 
+		--2, 5, 6, 9, 11, 15,
+
+		----maybe it can work?
+		--I thought I had prooved this in my head in the other direction.
+		--that this will not work.
+		--but now that I am typing it out,
+		--it is feeling otherwise.
+
+		--I may need to build another table?
+		--no.
+
+		--I can do it here.
+
+--USE Weather_Observation_Station_2;
+--SELECT ID 
+--	FROM STATION
+--	WHERE ID IN
+--	(SELECT ID
+--	FROM STATION
+--	WHERE 
+--	ORDER ID ASC
+	--
+	--here I am trying to pass just any position?
+	--but I keep trying to jump to count(id)/2 
+	--but this gets me the id position.
+	--which is not the id contents.
+	--ok,
+	--I think I worked myself back to the proof
+	--i did in my head at first.
+
