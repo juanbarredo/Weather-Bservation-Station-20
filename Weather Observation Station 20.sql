@@ -14,7 +14,7 @@
 
 ----------------------------A median
 ----------------------------is defined
-----------------------------as s number separating the higher half of a data set 
+----------------------------as a number separating the higher half of a data set 
 ----------------------------from the lower half.
 
 ----------------------------query the median of the Northern Latitudes (LAT_N) 
@@ -568,12 +568,12 @@ SELECT CAST(LAT_N AS numeric) % 2 AS 'CAST ( LAT_N AS numeric ) % 2'
 
 --How can i get WHERE
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION
-	WHERE LAT_N IN 
-	(SELECT COUNT(LAT_N) / 2
-		FROM STATION);
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N IN 
+--	(SELECT COUNT(LAT_N) / 2
+--		FROM STATION);
 
 		--Amazing.
 		--I got the expected answer.
@@ -678,10 +678,10 @@ SELECT LAT_N
 
 --I will explore it.
 
-USE Weather_Observation_Station_2;
-SELECT ID
-	FROM STATION
-	ORDER BY ID DESC;
+--USE Weather_Observation_Station_2;
+--SELECT ID
+--	FROM STATION
+--	ORDER BY ID DESC;
 
 	--ok, 
 	--now I want to look at it further.
@@ -730,4 +730,63 @@ SELECT ID
 	--ok,
 	--I think I worked myself back to the proof
 	--i did in my head at first.
+
+------------------------------04 13 2025------------------------------------
+
+--I am excited to get back
+
+--However,
+--I am completely lost.
+
+--what other direction can I go except to look back?
+
+--i feel like this code is getting too long.
+
+--either way,
+--I have solved lots of parts of the problem
+--I am currently just stuck at
+--the
+--part where I retrieve values that are in specific positions.
+
+--I may need to think about the number line when ascendingly/descendingly arranged.
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N
+	FROM STATION
+	WHERE LAT_N = 144.989059448242;
+
+	--I am not coming up with anything else to look into at the moment.
+
+	--where else can I go?
+
+	--I understand that the reason I am unable to get the query in lines 753 - 756 to 
+	--give me the desired result set 
+	--"144.989059448242"
+	--doesn't mean any thing to me at the moment.
+
+	--i am thinking about recursive formulas
+	--maybe getting the selection process that 
+	--the search engine uses
+	--to compare the last vs the next number.
+
+	--or the min/max
+
+	--then as long as number line is asc/desc arranged.
+
+	--assumptions can be made
+
+	--so then
+
+	--I can get the min max.
+
+	--to compare to each other.
+
+	--but I need a way to discard them as they are being selected.
+	--or after they are being selected.
+
+	--I need to get the name of this selection process again.
+
+
+
+
 
