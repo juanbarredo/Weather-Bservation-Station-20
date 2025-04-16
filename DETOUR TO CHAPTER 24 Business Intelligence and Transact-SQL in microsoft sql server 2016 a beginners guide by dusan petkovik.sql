@@ -89,9 +89,9 @@
 --ok, I already have that table.
 --let me get it out.
 
-USE sample
-SELECT *
-	FROM project;
+--USE sample
+--SELECT *
+--	FROM project;
 
 --ok, 
 --I thought I already had this table but this is a new table indeed.
@@ -103,12 +103,53 @@ SELECT *
 --I suppose that I will either make a new file or just add it here. 
 --this is a notes section?
 
-USE sample;
-SELECT * 
-	FROM department;
+--USE sample;
+--SELECT * 
+--	FROM department;
 
 	--ok,
 	--I think that I will use this database because this is the database (the sample database) 
 	--where I have saved the other book related tables.
 
 --then I should follow protocol and make a new file.
+
+-------------------------------------04 15 2025-------------------------------------------------------
+
+--I thought I was done looking at this chapter to solve Weather Observation Station 20.
+--it is about finding the median of LAT_N
+
+--I peaked and saw an answer that included the TOP clause in the SELECT statement.
+
+--TOP (50) PERCENT it said.
+
+--Yeah, that should be able to solve it.
+
+--So, I look in the book and learn that it is in Chapter 24!
+
+--So, let me continue here to explore the TOP clause.
+
+----Standard and Nonstandard Analytics Functions:
+
+----The Database Engine contains the following standard and nonstandard analytic functions:
+
+----	TOP
+----	OFFSET/FETCH
+----	NTILE
+----	PIVOT and UNPIVOT
+
+----The second function,
+----OFFSET/FETCH,
+----is specified in the SQL standard,
+----while the three others are Transact-SQL extensions.
+----The following sections describe these
+----analytic functions and operators.
+
+----TOP Clause
+----The TOP clause specifies the first n rows of the query
+----result that are to be retrieved.
+
+----This clause should always be used with the ORDER BY clause.
+
+----because the result of such a query is always well fedined and can be used in table expressions.
+
+----(a table expression specifies a sample of a grouped result set).
