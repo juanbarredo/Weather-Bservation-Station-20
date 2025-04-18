@@ -153,3 +153,59 @@
 ----because the result of such a query is always well fedined and can be used in table expressions.
 
 ----(a table expression specifies a sample of a grouped result set).
+
+---------------------------04 17 2025-------------------------------------------
+
+--Happy to continue.
+
+----A query with TOP but without the ORDER BY clause
+----is nondeterministic,
+----meaning that multiple executions of the query with the same data
+----may not always display the same result set.
+
+---Example 24.19 shows the use of this clause.
+
+----EXAMPLE 24.19
+
+----Retrieve the four projects with the highest budgets:
+
+--USE sample;
+--SELECT TOP (4) dept_name, budget
+--	FROM project_dept
+--	ORDER BY budget DESC;
+
+----As you can see from Example 24.19,
+
+----the TOP clause is part of the SELECT list and is written in front of all column names in the list.
+
+----NOTE:
+----You should write the input value of TOP inside parentheses,
+----because the system supports any self-contained expression as input.
+
+--How outrageous of a self-contained expression can one place in there?
+
+----The TOP clause is a nonstandard ANSI SQL implementation
+----used to display the ranking of the top n rows from a table.
+
+--I can't get over the fact that TOP clause doesn't mean or include the ORDER BY clause.
+
+--I think this might point to something I cannot quite comprehend yet.
+
+----A query equivalent to Example 24.19 that uses the window constrcut and the RANK function is shown in Example 24.20
+
+----EXAMPLE 24.20
+----Retrieve the four projects with the highest budgets:
+
+--USE sample;
+--SELECT dept_name, budget
+--	FROM 
+--	( SELECT dept_name, budget,
+--		RANK () OVER ( ORDER BY budget DESC ) AS rank_budget
+--		FROM project_dept) parts_dept
+
+--Ok,
+--I need to review how the tables look like from the relevant database.
+
+--I have missed a lot of clues as a result.
+
+--or there is this felt helplessness which could have been completely avoided from looking through the tables.
