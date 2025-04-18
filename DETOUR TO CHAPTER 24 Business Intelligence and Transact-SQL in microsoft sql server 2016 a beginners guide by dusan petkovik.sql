@@ -209,3 +209,59 @@
 --I have missed a lot of clues as a result.
 
 --or there is this felt helplessness which could have been completely avoided from looking through the tables.
+
+-----------------------------------------04 18 2025--------------------------------------
+
+--Let me explore the tables in the database sample.
+
+--USE sample;
+--SELECT * 
+--	FROM project_dept;
+
+--USE sample;
+--SELECT *
+--	FROM part_dept; --I can't find any mention excecpt in example 24.20
+								--it is probably a typo.
+
+USE sample;
+SELECT dept_name, budget
+	FROM 
+	( SELECT dept_name, budget,
+		RANK () OVER ( ORDER BY budget DESC ) AS rank_budget
+		FROM project_dept) project_dept
+		WHERE rank_budget <= 4;
+
+		--I am very tripped out that the subquery that makes up the ranking function through a window construct
+		--is AFTER the FROM clause.
+
+		--it is such a weird placement for me.
+
+--USE sample;
+--SELECT dept_name, budget
+--	FROM ( SELECT dept_name, budget,
+--		RANK () OVER ( ORDER BY budget DESC ) AS rank_budget
+--		FROM project_dept)
+--	 project_dept
+--		WHERE rank_budget <= 4; --I switched the order around and it seems that line 245 in this case
+		--will not link up with the AS rank_budget in line 242 in this case.
+
+		--that is so interesting.
+
+		--ok,
+		--so I need to make a decision.
+
+		--well, there are just two more examples.
+		--at least the next one is with porcentages!
+		--I will definitely do that one.
+
+----The TOP clause can albe b eused with the additional PERCENT option.
+----In that case,
+----the first n percent of rows are retrieved from the result set.
+--this might be worthwhile thinking about.
+--like, result set.  is pre-emptive.
+--the way this is chunked here for me is very interesting.
+----The additional option WITH TIES
+----specifies that additioanl rows will be retrieved from the query result
+----if they have the same value in the ORDER BY  column(s) as the last row that belongs to the displayed set.
+
+----Example 24.21 shows the use of the PERCENT and WITH TIES options.
