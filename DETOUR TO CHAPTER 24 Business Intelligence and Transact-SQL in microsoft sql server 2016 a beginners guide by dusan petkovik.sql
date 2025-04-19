@@ -223,13 +223,13 @@
 --	FROM part_dept; --I can't find any mention excecpt in example 24.20
 								--it is probably a typo.
 
-USE sample;
-SELECT dept_name, budget
-	FROM 
-	( SELECT dept_name, budget,
-		RANK () OVER ( ORDER BY budget DESC ) AS rank_budget
-		FROM project_dept) project_dept
-		WHERE rank_budget <= 4;
+--USE sample;
+--SELECT dept_name, budget
+--	FROM 
+--	( SELECT dept_name, budget,
+--		RANK () OVER ( ORDER BY budget DESC ) AS rank_budget
+--		FROM project_dept) project_dept
+--		WHERE rank_budget <= 4;
 
 		--I am very tripped out that the subquery that makes up the ranking function through a window construct
 		--is AFTER the FROM clause.
@@ -265,3 +265,44 @@ SELECT dept_name, budget
 ----if they have the same value in the ORDER BY  column(s) as the last row that belongs to the displayed set.
 
 ----Example 24.21 shows the use of the PERCENT and WITH TIES options.
+
+-------------------------------------------04 19 2025-----------------------------------------------------
+
+----EXAMPLE 24.21
+----Retrieve the top 25 percent of rows with the smallest number of employees:
+
+--ok, I will give this one a crack before looking at the answer.
+
+--let me go ahead and zero in on the table that will be used.
+
+USE sample;
+SELECT *
+	FROM project_dept;
+
+--ok,
+--I now need to do some weird backwards thinking.
+--or like,
+--double barreled questions here.
+
+--let me first go ahead and get the first part down.
+--which could be smallest number of employees.
+--ORDER BY()
+
+--USE sample;
+--SELECT emp_cnt
+--	FROM project_dept
+--	ORDER BY emp_cnt ASC;
+
+--USE sample;
+--SELECT TOP (25) PERCENT WITH TIES emp_cnt, budget
+--	FROM project_dept
+--	ORDER BY emp_cnt ASC;
+
+--I was more-or-less able to solve the query.
+--, I just missed "budget" column.
+--no, again.
+--they do weird wording.
+--whatever.
+
+--I want to move on and tackle the median again.
+--I feel I have enough to try.

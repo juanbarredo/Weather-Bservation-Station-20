@@ -24,9 +24,9 @@
 --let me begin by 
 --querying LAT_N
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION;
 
 	--Yeah,
 	--already seeing the neat result set
@@ -47,10 +47,10 @@ SELECT LAT_N
 --half
 --from the lower half.
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION
-	ORDER BY LAT_N;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N;
 
 	--Ok,
 	--now to test
@@ -59,9 +59,9 @@ SELECT LAT_N
 	--how do I reverse ORDER BY?
 	--i will look at it later
 
-USE Weather_Observation_Station_2;
-SELECT MIN(LAT_N) AS 'MIN(LAT_N)'
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT MIN(LAT_N) AS 'MIN(LAT_N)'
+--	FROM STATION;
 
 	--And as I read the problem.
 	--I realize that they did indeed
@@ -70,17 +70,17 @@ SELECT MIN(LAT_N) AS 'MIN(LAT_N)'
 --looking at the book
 --ORDER BY COLUMN_NAME DESC;
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N AS 'ORDER BY LAT_N DESC;'
-	FROM STATION
-	ORDER BY LAT_N DESC;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N AS 'ORDER BY LAT_N DESC;'
+--	FROM STATION
+--	ORDER BY LAT_N DESC;
 
 	--Ok,
 	--now just a quick proof.
 
-USE Weather_Observation_Station_2;
-SELECT MAX(LAT_N) AS 'MAX(LAT_N)'
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT MAX(LAT_N) AS 'MAX(LAT_N)'
+--	FROM STATION;
 
 	--Ok,
 
@@ -107,9 +107,9 @@ SELECT MAX(LAT_N) AS 'MAX(LAT_N)'
 
 --i think there is a literal function called count(column)
 
-USE Weather_Observation_Station_2;
-SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
+--	FROM STATION;
 	--would this have to be the subquery?
 
 --USE Weather_Observation_Station_2;
@@ -298,9 +298,9 @@ SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
 
 --let me see if I can get a query result for the row number alone.
 
-USE Weather_Observation_Station_2;
-SELECT * 
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT * 
+--	FROM STATION;
 
 	--HOLD ON.
 	--is there really not a very simple row_number().
@@ -310,9 +310,9 @@ SELECT *
 	--the rest of this pomodoro may well be exploring the 
 	--row_number().
 
-USE Weather_Observation_Station_2;
-SELECT ROW_NUMBER() OVER(ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --I feel like this is such a roundabout way of doing a simple pointing to the already existing index row?
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT ROW_NUMBER() OVER(ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --I feel like this is such a roundabout way of doing a simple pointing to the already existing index row?
+--	FROM STATION;
 
 --ok,
 --so now.
@@ -329,9 +329,9 @@ SELECT ROW_NUMBER() OVER(ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --I feel li
 
 	--
 
-	USE Weather_Observation_Station_2;
-SELECT ROW_NUMBER() OVER(PARTITION BY 2 ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --PARTITION BY 2 didn't do anything ;_;
-	FROM STATION;
+--	USE Weather_Observation_Station_2;
+--SELECT ROW_NUMBER() OVER(PARTITION BY 2 ORDER BY LAT_N DESC) AS 'LAT_N DESC', LAT_N --PARTITION BY 2 didn't do anything ;_;
+--	FROM STATION;
 
 --ok,
 --time to start cloding down.
@@ -369,17 +369,17 @@ SELECT ROW_NUMBER() OVER(PARTITION BY 2 ORDER BY LAT_N DESC) AS 'LAT_N DESC', LA
 
 --I want to try a super quieck query
 
-USE Weather_Observation_Station_2;
-SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
+--	FROM STATION;
 
 	--I got some weird ass answer.
 	--I have no idea what is happening.
 	--however, I have struck gold.
 
-	USE Weather_Observation_Station_2;
-	SELECT SUM(LAT_N)
-		FROM STATION;
+--	USE Weather_Observation_Station_2;
+--	SELECT SUM(LAT_N)
+--		FROM STATION;
 
 		--This is insane.
 
@@ -424,9 +424,9 @@ SELECT SUM(LAT_N) OVER(ORDER BY LAT_N DESC)
 
 --How about if for now I just focus on counting the rows.
 
-USE Weather_Observation_Station_2;
-SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
+--	FROM STATION;
 
 	--Ok,
 	--there are 499 rows when I use COUNT(LAT_N)
@@ -442,9 +442,9 @@ SELECT COUNT(LAT_N) AS 'COUNT(LAT_N)'
 
 	--let me make a query that gives me the half number count.
 
-USE Weather_Observation_Station_2;
-SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
-	FROM STATION; 
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
+--	FROM STATION; 
 
 	--So,
 	--I am getting strong where vibes.
@@ -541,9 +541,9 @@ SELECT COUNT(LAT_N) / 2 AS 'COUNT(LAT_N)  /  2'
 --ok, let me cast lat_n into the numeric data type
 --this is already taking a twist that I don't care for.
 
-USE Weather_Observation_Station_2;
-SELECT CAST(LAT_N AS numeric) % 2 AS 'CAST ( LAT_N AS numeric ) % 2'
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT CAST(LAT_N AS numeric) % 2 AS 'CAST ( LAT_N AS numeric ) % 2'
+--	FROM STATION;
 
 	--amazing.
 	--it is working.
@@ -750,10 +750,10 @@ SELECT CAST(LAT_N AS numeric) % 2 AS 'CAST ( LAT_N AS numeric ) % 2'
 
 --I may need to think about the number line when ascendingly/descendingly arranged.
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION
-	WHERE LAT_N = 144.989059448242;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	WHERE LAT_N = 144.989059448242;
 
 	--I am not coming up with anything else to look into at the moment.
 
@@ -786,6 +786,44 @@ SELECT LAT_N
 
 	--I need to get the name of this selection process again.
 
+---------------------------------------04 19 2025-----------------------------------------------
+
+--I will give this a new try.
+
+USE Weather_Observation_Station_2;
+SELECT TOP (50) PERCENT WITH TIES LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC;
+
+	--I have reached but I am stuck now.
+	--mentally,
+	--what does it mean that I have.
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC;
+
+--Ok,
+--I am lost.
+--but I am thinking that I can get a sum of rows 249 and 250 and divide them by two.
+--I previously had a completely different way of solving this
+--and I am having to re-imagine.
+--I feel very out of lock step.
+
+--I think I need to prove if TOP (50) PERCENT WITH TIES 
+--will always get the correct.
+--I don't know how to explain it.
+--but I think that I need to do another query where there are an even number of fields.
+--I want to see those.
+
+--once that is solved.
+--I need to see how to add and divide two specific values.
+--I think I can remove results?
+
+--how?
+
+--I feel like i could know the answer.
 
 
 
