@@ -790,19 +790,19 @@
 
 --I will give this a new try.
 
-USE Weather_Observation_Station_2;
-SELECT TOP (50) PERCENT WITH TIES LAT_N
-	FROM STATION
-	ORDER BY LAT_N ASC;
+--USE Weather_Observation_Station_2;
+--SELECT TOP (50) PERCENT WITH TIES LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N ASC;
 
 	--I have reached but I am stuck now.
 	--mentally,
 	--what does it mean that I have.
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION
-	ORDER BY LAT_N ASC;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N ASC;
 
 --Ok,
 --I am lost.
@@ -824,6 +824,73 @@ SELECT LAT_N
 --how?
 
 --I feel like i could know the answer.
+
+----------------------------------------04 20 2025-------------------------------------------------
+
+--I have two options.
+
+--I can search for an even numbered value indexed field to try the TOP (50) PERCENT WITH TIES.
+
+--Which I don't think 
+--my understanding of the mean is being warped.
+
+--is it an INDEX or is it a value.
+
+--is it in essense the values in the INDEX position.
+--or is it in essense the INDEX in the values position.
+
+--I guess it is the actual difference between both.
+
+--But literally,
+--it is a field of values.
+--organized ascendingly.
+
+--then TOP ( 50 ) PERCENT WITH TIES
+
+--calls forth such an event.
+--it is a tool that calls forth a result set
+--that is bult similarly on the same-ish logic.
+--as the mediam logic.
+
+--specifically since I used the ORDER BY LAT_N ASC clause.
+
+--ok,
+--so,
+--what is the next step.
+
+--I guess I do want to find an table with a even indexed fields.
+--I may be off in describing indexed fields.
+
+USE top_earners;
+SELECT *
+	FROM employee;
+
+USE top_earners;
+SELECT COUNT(employee_id) AS 'COUNT ( employee_id )'
+	FROM employee;
+
+USE top_earners;
+SELECT TOP (50) PERCENT WITH TIES employee_id
+	FROM employee
+	ORDER BY employee_id ASC;
+
+--ok,
+--I got a profound re-orientation going with 
+--my understanding of the mean.
+
+--also,
+--with sql.
+
+--it is very weird.
+
+--it assumes that I don't know the database.
+
+--there just isn't a direct way to access the result set I want
+
+--I have to get really good at different commands.
+
+--it is procedural like that.
+--but this isn't what procedural means.
 
 
 
