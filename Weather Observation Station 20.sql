@@ -861,22 +861,22 @@
 --I guess I do want to find an table with a even indexed fields.
 --I may be off in describing indexed fields.
 
-USE top_earners;
-SELECT *
-	FROM employee;
+--USE top_earners;
+--SELECT *
+--	FROM employee;
 
-USE top_earners;
-SELECT COUNT(employee_id) AS 'COUNT ( employee_id )'
-	FROM employee;
+--USE top_earners;
+--SELECT COUNT(employee_id) AS 'COUNT ( employee_id )'
+--	FROM employee;
 
-USE top_earners;
-SELECT TOP (50) PERCENT WITH TIES employee_id
-	FROM employee
-	ORDER BY employee_id ASC;
+--USE top_earners;
+--SELECT TOP (50) PERCENT WITH TIES employee_id
+--	FROM employee
+--	ORDER BY employee_id ASC;
 
 --ok,
 --I got a profound re-orientation going with 
---my understanding of the mean.
+--my understanding of the median.
 
 --also,
 --with sql.
@@ -892,6 +892,67 @@ SELECT TOP (50) PERCENT WITH TIES employee_id
 --it is procedural like that.
 --but this isn't what procedural means.
 
+---------------------------------------------04 22 2025-------------------------------------------
 
+--so weird but I re-understand that yeah.
+--SQL was made for situtations for where the 
+--database analyst doesn't know that database.
 
+--really weird.
 
+--I have run into it again.
+
+--ok,
+
+--so,
+
+--now I want to find out if there is a way to 
+
+--I am trying to think of a way to reliably get the 
+
+USE Weather_Observation_Station_2;
+SELECT TOP (50) PERCENT WITH TIES LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC;
+
+--Ok,
+
+--I need to get a way to reduce the output to 
+--I don't know how to describe it.
+
+--I need to do a google search for something like
+
+--would I need to choose the WHERE condition then
+
+--what would the WHERE condition be
+
+--it could be a sub-query.
+
+USE Weather_Observation_Station_2;
+SELECT TOP 2 LAT_N
+	FROM STATION
+		WHERE LAT_N IN
+			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC)
+	ORDER BY LAT_N DESC;
+
+	--I am getting many ideas.
+
+	--because specifically,
+	--the query in lines 931 to 937 is the solution 
+
+	USE Weather_Observation_Station_2;
+SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
+	FROM STATION
+		WHERE LAT_N IN
+			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC)
+	ORDER BY LAT_N DESC;
+
+--ok,
+--I am happy to report progress.
+
+--I will be working on adding line 946.
+--seEms I can't just SUM(TOP 2 LAT_N)?
