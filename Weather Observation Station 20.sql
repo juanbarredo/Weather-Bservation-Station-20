@@ -942,7 +942,7 @@ SELECT TOP 2 LAT_N
 	--because specifically,
 	--the query in lines 931 to 937 is the solution 
 
-	USE Weather_Observation_Station_2;
+USE Weather_Observation_Station_2;
 SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
 	FROM STATION
 		WHERE LAT_N IN
@@ -956,3 +956,70 @@ SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
 
 --I will be working on adding line 946.
 --seEms I can't just SUM(TOP 2 LAT_N)?
+
+---------------------------------------04 27 2025-----------------------------------------
+
+--I haven't worked on this problem since the 22nd.
+
+--I also fear my growth is just too slow.
+
+--and that I don't work on this enough.
+
+--but I also think that this is the way.
+--slow and steady.
+
+--I fear that I have been working on this problem for 2-3 months already?
+
+--well,
+--where did I leave off?
+
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 LAT_N
+--	FROM STATION
+--		WHERE LAT_N IN
+--			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+--			FROM STATION
+--			ORDER BY LAT_N ASC)
+--		ORDER BY LAT_N DESC;
+
+--The query in lines 976 to 983
+--is giving me an error.
+
+--as I look at information on the SUM aggragate function
+--I see that SUM is a deterministic function.
+
+--I am lost as to how important that is right now
+--and how much time can I spend on it.
+
+--I will investigate the error itself.
+
+--I may have found something insane on stackoverflow.com
+
+--SELECT SUM( whatever )
+--	FROM (
+--			SELECT TOP (10) whatever
+--			FROM Tablename
+--) AS T
+
+--why 'AS T'?
+
+
+--well, let me try it really quick.
+
+USE Weather_Observation_Station_2;
+SELECT SUM( whatever )
+	FROM 
+	(
+		SELECT TOP 2 LAT_N whatever
+		FROM STATION
+	)
+		STATION
+		WHERE whatever IN
+			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+			FROM STATION
+			ORDER BY LAT_N ASC)
+		ORDER BY LAT_N DESC;
+
+		--wow,
+		--way different approach right now 
+		--it is getting too convoluted for me to keep up with.
