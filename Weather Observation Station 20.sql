@@ -911,7 +911,7 @@
 --I am trying to think of a way to reliably get the 
 
 USE Weather_Observation_Station_2;
-SELECT TOP (50) PERCENT WITH TIES LAT_N
+SELECT TOP (50) PERCENT WITH TIES LAT_N AS 'TOP ( 50 ) PERCENT WITH TIES LAT_N ASC'
 	FROM STATION
 	ORDER BY LAT_N ASC;
 
@@ -928,28 +928,28 @@ SELECT TOP (50) PERCENT WITH TIES LAT_N
 
 --it could be a sub-query.
 
-USE Weather_Observation_Station_2;
-SELECT TOP 2 LAT_N
-	FROM STATION
-		WHERE LAT_N IN
-			(SELECT TOP (50) PERCENT WITH TIES LAT_N
-	FROM STATION
-	ORDER BY LAT_N ASC)
-	ORDER BY LAT_N DESC;
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 LAT_N
+--	FROM STATION
+--		WHERE LAT_N IN
+--			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N ASC)
+--	ORDER BY LAT_N DESC;
 
 	--I am getting many ideas.
 
 	--because specifically,
 	--the query in lines 931 to 937 is the solution 
 
-USE Weather_Observation_Station_2;
-SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
-	FROM STATION
-		WHERE LAT_N IN
-			(SELECT TOP (50) PERCENT WITH TIES LAT_N
-	FROM STATION
-	ORDER BY LAT_N ASC)
-	ORDER BY LAT_N DESC;
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
+--	FROM STATION
+--		WHERE LAT_N IN
+--			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N ASC)
+--	ORDER BY LAT_N DESC;
 
 --ok,
 --I am happy to report progress.
@@ -1006,20 +1006,91 @@ SELECT TOP 2 LAT_N --I CAN'T SUM TOP 2 LAT_N ?!?
 
 --well, let me try it really quick.
 
-USE Weather_Observation_Station_2;
-SELECT SUM( whatever )
-	FROM 
-	(
-		SELECT TOP 2 LAT_N whatever
-		FROM STATION
-	)
-		STATION
-		WHERE whatever IN
-			(SELECT TOP (50) PERCENT WITH TIES LAT_N
-			FROM STATION
-			ORDER BY LAT_N ASC)
-		ORDER BY LAT_N DESC;
+--USE Weather_Observation_Station_2;
+--SELECT SUM( whatever )
+--	FROM 
+--	(
+--		SELECT TOP 2 LAT_N whatever
+--		FROM STATION
+--	)
+--		STATION
+--		WHERE whatever IN
+--			(SELECT TOP (50) PERCENT WITH TIES LAT_N
+--			FROM STATION
+--			ORDER BY LAT_N ASC)
+--		ORDER BY LAT_N DESC;
 
 		--wow,
 		--way different approach right now 
 		--it is getting too convoluted for me to keep up with.
+
+----------------------------------04 28 2025------------------------------------------
+
+--ok,
+--yesterday I played around with something very convoluted but that I have seen before.
+
+--what is up with the extra select statement after the FROM clause but before the actual table name that
+--FROM is supposed to be.
+
+--It is such a weird thing.
+
+--like a third leg.
+
+--ok,  I think that I need to simplify a query where I play around with that.
+
+--USE Weather_Observation_Station_2;
+--SELECT whatever
+--	FROM 
+--	(
+--		SELECT TOP 2 LAT_N whatever
+--		FROM STATION
+--		ORDER BY LAT_N DESC
+--	)
+--		STATION;
+
+--The thing is that the query from lines 1042 to 1049
+--is such a game changer for me.
+
+--I need to recalibrate completely.
+
+--I think that this is just a subquery.
+--and I figured out how to do make and use a variable, "whatever".
+
+--USE Weather_Observation_Station_2;
+--SELECT whatever
+--	FROM (
+--		SELECT TOP (50) PERCENT WITH TIES LAT_N whatever
+--		FROM STATION
+--		ORDER BY LAT_N ASC
+--		) STATION;
+
+		--yeah, it is just a weird way to write up a subquery.
+
+		--I am now having to think about what is the next step?
+
+--I think next I have to make an IF even/odd row count in a specific column.
+
+--if even run one if odd, run the other.
+
+--ok,
+--I am back to square one.
+
+--How do I 
+--oh yea, the remainder stuff.
+
+--Let me get that remainder stuff down
+
+--USE Weather_Observation_Station_2;
+--IF (
+--SELECT COUNT ( LAT_N ) AS 'COUNT ( LAT_N )'
+--	FROM STATION ) 
+--
+--ok,
+--If I can now get the count of how many rows to be divided by remainder.
+--I should be able to move on.
+
+--I think this is the next thing for me to move on with.
+
+--I think I have enough otherwise.
+
+
