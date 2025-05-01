@@ -1093,4 +1093,64 @@ SELECT TOP (50) PERCENT WITH TIES LAT_N AS 'TOP ( 50 ) PERCENT WITH TIES LAT_N A
 
 --I think I have enough otherwise.
 
+----------------------------------------------05 01 2025------------------------------------------------
 
+--ok!
+
+--so, I am now going to work on getting the count to be
+--yeah, the 'whatever' label
+
+--USE Weather_Observation_Station_2;
+--SELECT (counted_lat_n % 2) <> 0
+--	FROM(
+--	SELECT COUNT(LAT_N) counted_lat_n
+--	FROM STATION)
+--	STATION;
+	--ok,
+	--I think I am having a realization that I am going about it
+	--the wrong way.
+
+	--I need to play around with how I vizualize how columns
+	--interact.
+
+	--because in line 1104, I am assuming that 
+
+USE Weather_Observation_Station_2;
+SELECT COUNT(LAT_N) counted_lat_n
+	FROM STATION;
+
+USE Weather_Observation_Station_2;
+IF(
+	SELECT (counted_lat_n % 2)
+		FROM
+		(
+			SELECT COUNT(LAT_N) counted_lat_n
+				FROM STATION
+		)
+		STATION) <> 0
+	PRINT 'TEST'
+	ELSE BEGIN
+	PRINT 'ODD'
+	END
+
+--SELECT (counted_lat_n % 2)
+--		FROM STATION
+
+USE Weather_Observation_Station_2;
+	SELECT (counted_lat_n % 2)
+		FROM
+		(
+			SELECT COUNT(LAT_N) counted_lat_n
+				FROM STATION
+		)
+		STATION;
+
+--I almost got it.
+--maybe now I am working with the fact that 
+-- <> 0 may not be the best test.
+--because 1 isn't zero.
+--2 also isn't zero.
+
+--ok,
+--yeah.
+--let me keep playing
