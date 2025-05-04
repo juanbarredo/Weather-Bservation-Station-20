@@ -1137,7 +1137,7 @@ IF(
 --		FROM STATION
 
 USE Weather_Observation_Station_2;
-	SELECT (counted_lat_n % 2)
+	SELECT (counted_lat_n % 2) AS 'REMAINDER OF 499/2'
 		FROM
 		(
 			SELECT COUNT(LAT_N) counted_lat_n
@@ -1154,3 +1154,28 @@ USE Weather_Observation_Station_2;
 --ok,
 --yeah.
 --let me keep playing
+
+-----------------------------05 04 2025------------------------------------------------
+
+--Alright,
+--I need to find a new way to test the IF statement.
+
+--ok,
+--I need to construct then what the first IF
+--or actually,
+--the BOOLEAN expression.
+
+--what does it have to equal in this case
+--what is the general case for it to be equal to?
+
+--ok,
+--yeah,
+
+--I was right.
+
+--if the remainder is 1 it is an odd number
+--if the remainder is 0 it is an even number.
+
+--the remainder from being divided by 2.
+
+--I can construct this just fine.
