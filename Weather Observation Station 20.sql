@@ -1119,19 +1119,19 @@ USE Weather_Observation_Station_2;
 SELECT COUNT(LAT_N) counted_lat_n
 	FROM STATION;
 
-USE Weather_Observation_Station_2;
-IF(
-	SELECT (counted_lat_n % 2)
-		FROM
-		(
-			SELECT COUNT(LAT_N) counted_lat_n
-				FROM STATION
-		)
-		STATION) <> 0
-	PRINT 'TEST'
-	ELSE BEGIN
-	PRINT 'ODD'
-	END
+--USE Weather_Observation_Station_2;
+--IF(
+--	SELECT (counted_lat_n % 2)
+--		FROM
+--		(
+--			SELECT COUNT(LAT_N) counted_lat_n
+--				FROM STATION
+--		)
+--		STATION) <> 0
+--	PRINT 'TEST'
+--	ELSE BEGIN
+--	PRINT 'ODD'
+--	END
 
 --SELECT (counted_lat_n % 2)
 --		FROM STATION
@@ -1179,3 +1179,62 @@ USE Weather_Observation_Station_2;
 --the remainder from being divided by 2.
 
 --I can construct this just fine.
+
+------------------------------------05 05 2025------------------------------------
+
+--
+
+USE Weather_Observation_Station_2;
+IF(
+	SELECT (counted_lat_n % 2)
+		FROM
+		(
+			SELECT COUNT(LAT_N) counted_lat_n
+				FROM STATION
+		)
+		STATION) = 0
+		PRINT '0'
+		ELSE BEGIN
+		SELECT *
+			FROM STATION
+		END
+
+--Ok,
+--super nice.
+--I got to the next step.
+--I have confidence that I have built the IF statement correctly.
+--the next step is to build what to do if even and what to do if odd
+
+--i am quite sure that I have already done this before but I am drawing a blank.
+
+--ok,
+--if remainder is zero means it is an even number of rows.
+--let me then am I sure that 
+--TOP ( 50 ) PERCENT WITH TIES LAT_N ASC
+--will get me the two even I need.
+--yes.
+--because of how SQL rounds up.
+--in this case.
+--i am not modifying how it rounds up.
+--i believe this is how I am getting away with this.
+--now I am questioning WITH TIES ASC.
+
+--I forget and don't feel like chasing line 1220.
+
+USE Weather_Observation_Station_2;
+SELECT TOP 2 WITH TIES WHATEVER
+	FROM 
+	(
+SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+	FROM STATION
+	ORDER BY LAT_N ASC
+	)
+	STATION
+	ORDER BY WHATEVER DESC;
+
+--OK!
+--I got quite far actually.
+--i am now building the sum and divide by two function.
+
+--somehow I am supposed to add and divide in the SELECT statement line.
+--I am going to have to read on about the SUM function.
