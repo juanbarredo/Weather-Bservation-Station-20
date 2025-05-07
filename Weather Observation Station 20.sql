@@ -1184,20 +1184,20 @@ USE Weather_Observation_Station_2;
 
 --
 
-USE Weather_Observation_Station_2;
-IF(
-	SELECT (counted_lat_n % 2)
-		FROM
-		(
-			SELECT COUNT(LAT_N) counted_lat_n
-				FROM STATION
-		)
-		STATION) = 0
-		PRINT '0'
-		ELSE BEGIN
-		SELECT *
-			FROM STATION
-		END
+--USE Weather_Observation_Station_2;
+--IF(
+--	SELECT (counted_lat_n % 2)
+--		FROM
+--		(
+--			SELECT COUNT(LAT_N) counted_lat_n
+--				FROM STATION
+--		)
+--		STATION) = 0
+--		PRINT '0'
+--		ELSE BEGIN
+--		SELECT *
+--			FROM STATION
+--		END
 
 --Ok,
 --super nice.
@@ -1221,8 +1221,28 @@ IF(
 
 --I forget and don't feel like chasing line 1220.
 
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 WITH TIES WHATEVER
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+--	FROM STATION
+--	ORDER BY LAT_N ASC
+--	)
+--	STATION
+--	ORDER BY WHATEVER DESC;
+
+--OK!
+--I got quite far actually.
+--i am now building the sum and divide by two function.
+
+--somehow I am supposed to add and divide in the SELECT statement line.
+--I am going to have to read on about the SUM function.
+
+-----------------------------------------05 06 2025-------------------------------------------------------
+
 USE Weather_Observation_Station_2;
-SELECT TOP 2 WITH TIES WHATEVER
+SELECT TOP 2 WITH TIES WHATEVER AS 'THE 2 VALUES TO ADD AND DIVIDE BY 2'
 	FROM 
 	(
 SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
@@ -1232,9 +1252,64 @@ SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
 	STATION
 	ORDER BY WHATEVER DESC;
 
---OK!
---I got quite far actually.
---i am now building the sum and divide by two function.
+USE Weather_Observation_Station_2;
+IF(
+	SELECT (counted_lat_n % 2)
+		FROM
+		(
+			SELECT COUNT(LAT_N) counted_lat_n
+				FROM STATION
+		)
+		STATION) = 0
+		SELECT TOP 2 WITH TIES WHATEVER
+			FROM 
+			(
+			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+				FROM STATION
+				ORDER BY LAT_N ASC
+			)
+		STATION
+	ORDER BY WHATEVER DESC
+		ELSE BEGIN
+		SELECT *
+			FROM STATION
+		END
 
---somehow I am supposed to add and divide in the SELECT statement line.
---I am going to have to read on about the SUM function.
+--I thought I had figured something out but I was wrong.
+
+--I am going to attempt to use the OVER clause.
+
+--I believe it will draw me closer.
+
+--I think I can use the TOP 2 WITH TIES WHATEVER line if I use OVER
+
+--so,
+--something like
+--SUM(WHATEVER) OVER (TOP 2 WITH TIES WHATEVER)
+--USE Weather_Observation_Station_2;
+--SELECT SUM( WHATEVER ) OVER (TOP 2 WITH TIES WHATEVER
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION
+--	ORDER BY WHATEVER DESC
+
+--yeah,
+--I am lost.
+
+--I need to get a better grasp of OVER clause
+--but I am getting the same feel if I am wasting my time
+--and that I should stick to what I have built
+--but it has as it stands become too complex.
+
+--I think I will look at
+
+--can I partition by LAT_N anyways?
+--yeah,
+
+--next time I may spend it looking over the OVER clause.
+
+--or I need to think.
