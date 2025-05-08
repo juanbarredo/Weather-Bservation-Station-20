@@ -910,10 +910,10 @@
 
 --I am trying to think of a way to reliably get the 
 
-USE Weather_Observation_Station_2;
-SELECT TOP (50) PERCENT WITH TIES LAT_N AS 'TOP ( 50 ) PERCENT WITH TIES LAT_N ASC'
-	FROM STATION
-	ORDER BY LAT_N ASC;
+--USE Weather_Observation_Station_2;
+--SELECT TOP (50) PERCENT WITH TIES LAT_N AS 'TOP ( 50 ) PERCENT WITH TIES LAT_N ASC'
+--	FROM STATION
+--	ORDER BY LAT_N ASC;
 
 --Ok,
 
@@ -1115,9 +1115,9 @@ SELECT TOP (50) PERCENT WITH TIES LAT_N AS 'TOP ( 50 ) PERCENT WITH TIES LAT_N A
 
 	--because in line 1104, I am assuming that 
 
-USE Weather_Observation_Station_2;
-SELECT COUNT(LAT_N) counted_lat_n
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N) counted_lat_n
+--	FROM STATION;
 
 --USE Weather_Observation_Station_2;
 --IF(
@@ -1136,14 +1136,14 @@ SELECT COUNT(LAT_N) counted_lat_n
 --SELECT (counted_lat_n % 2)
 --		FROM STATION
 
-USE Weather_Observation_Station_2;
-	SELECT (counted_lat_n % 2) AS 'REMAINDER OF 499/2'
-		FROM
-		(
-			SELECT COUNT(LAT_N) counted_lat_n
-				FROM STATION
-		)
-		STATION;
+--USE Weather_Observation_Station_2;
+--	SELECT (counted_lat_n % 2) AS 'REMAINDER OF 499/2'
+--		FROM
+--		(
+--			SELECT COUNT(LAT_N) counted_lat_n
+--				FROM STATION
+--		)
+--		STATION;
 
 --I almost got it.
 --maybe now I am working with the fact that 
@@ -1241,39 +1241,39 @@ USE Weather_Observation_Station_2;
 
 -----------------------------------------05 06 2025-------------------------------------------------------
 
-USE Weather_Observation_Station_2;
-SELECT TOP 2 WITH TIES WHATEVER AS 'THE 2 VALUES TO ADD AND DIVIDE BY 2'
-	FROM 
-	(
-SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
-	FROM STATION
-	ORDER BY LAT_N ASC
-	)
-	STATION
-	ORDER BY WHATEVER DESC;
-
-USE Weather_Observation_Station_2;
-IF(
-	SELECT (counted_lat_n % 2)
-		FROM
-		(
-			SELECT COUNT(LAT_N) counted_lat_n
-				FROM STATION
-		)
-		STATION) = 0
-		SELECT TOP 2 WITH TIES WHATEVER
-			FROM 
-			(
-			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
-				FROM STATION
-				ORDER BY LAT_N ASC
-			)
-		STATION
-	ORDER BY WHATEVER DESC
-		ELSE BEGIN
-		SELECT *
-			FROM STATION
-		END
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 WITH TIES WHATEVER AS 'THE 2 VALUES TO ADD AND DIVIDE BY 2'
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+--	FROM STATION
+--	ORDER BY LAT_N ASC
+--	)
+--	STATION
+--	ORDER BY WHATEVER DESC;
+--------------------------------------------------------------------------------------------------------------------------------
+--USE Weather_Observation_Station_2;
+--IF(
+--	SELECT (counted_lat_n % 2)
+--		FROM
+--		(
+--			SELECT COUNT(LAT_N) counted_lat_n
+--				FROM STATION
+--		)
+--		STATION) = 0
+--		SELECT TOP 2 WITH TIES WHATEVER
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION
+--	ORDER BY WHATEVER DESC
+--		ELSE BEGIN
+--		SELECT *
+--			FROM STATION
+--		END
 
 --I thought I had figured something out but I was wrong.
 
@@ -1313,3 +1313,77 @@ IF(
 --next time I may spend it looking over the OVER clause.
 
 --or I need to think.
+
+--------------------------------------05 08 2025-----------------------------------------------
+
+--Ok,
+
+--I am now thinking that what I need to do is to is to collapse a subquery into with the main query.
+USE Weather_Observation_Station_2;
+SELECT TOP 2 WITH TIES WHATEVER
+			FROM 
+			(
+			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+				FROM STATION
+				ORDER BY LAT_N ASC
+			)
+		STATION
+	ORDER BY WHATEVER DESC;
+
+--How can I get the TOP 2 OVER the TOP 50 PERCENT in one SELECT statement
+--instead of the two I am using in lines 1322 - 1331?
+
+--so can I do TOP 2 LAT_N OVER ( PARTITION BY LAT_N ORDER BY LAT_N ASC)
+
+--USE Weather_Observation_Station_2;
+--SELECT TOP (2)  OVER ( PARTITION BY LAT_N ORDER BY LAT_N ASC) LAT_N
+--	FROM STATION;
+
+--I think I figured out that in my case I already have the answer.
+--or I should say.
+--I don't have the complete answer.
+--I have part of the answer.
+
+--let me get that down first.
+
+USE Weather_Observation_Station_2;
+IF(
+	SELECT (counted_lat_n % 2)
+		FROM
+		(
+			SELECT COUNT(LAT_N) counted_lat_n
+				FROM STATION
+		)
+		STATION) = 0
+		SELECT MAX (LAT_N)
+			FROM 
+			(
+			SELECT TOP (50) PERCENT WITH TIES LAT_N
+				FROM STATION
+				ORDER BY LAT_N ASC
+			)
+		STATION
+		ELSE BEGIN
+		SELECT MAX (LAT_N) AS 'MEDIAN OF ODD COUNTED COLUMN'
+			FROM 
+			(
+			SELECT TOP (50) PERCENT WITH TIES LAT_N
+				FROM STATION
+				ORDER BY LAT_N ASC
+			)
+		STATION
+		END
+
+--Ok,
+--Amazing.
+
+--Yeah,
+--this is really the only way
+--I need to just sit and quietly work through each problem.
+
+--once I solve this I will need to get unto JOIN problems.
+
+--I am starting to have a feel like I won't be ready for another whole year
+--instead of the 'by the end of this year' I have been hoping on.
+
+--depressing for sure.
