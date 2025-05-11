@@ -1387,3 +1387,84 @@ IF(
 --instead of the 'by the end of this year' I have been hoping on.
 
 --depressing for sure.
+
+-----------------------------------------------------------05 11 2025---------------------------------------------
+
+--I am going to see what I need to work on to solve this query.
+
+--I need to work on how to get the median when the field has an even number of values.
+
+--SELECT MAX (LAT_N)
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION;
+
+--I think I need to work on a data set that has an even number values.
+
+USE the_blunder;
+SELECT *
+	FROM employees;
+
+--ok, the table "employees" from the the database "the_blunder"
+--has 20 rows.
+
+--now, let me slowly build up the queries 
+
+USE the_blunder;
+SELECT TOP (50) PERCENT ID 
+	FROM employees
+	ORDER BY ID ASC;
+
+--ok,
+--I am completely stuck.
+
+--I am unsure how to
+--do I get a bottom (50) percent?
+
+--I need a catalog to look through I think.
+
+--it is starting to get weird.
+--I can't seem to find a crsip way to get the 10th and 11th item in the 20 count row of values that is ID.
+
+--I am thinking that I can
+
+USE the_blunder;
+SELECT TOP ( 50 ) PERCENT ID
+	FROM employees
+	ORDER BY ID DESC;
+
+--Ok,
+--so then do I just max and do a UNION of them?
+
+--I for get how UNIONs work.
+
+USE the_blunder;
+SELECT MAX(ID) AS 'MAX (ID) ASC'
+	FROM 
+	(
+SELECT TOP (50) PERCENT ID 
+	FROM employees
+	ORDER BY ID ASC
+	)
+	employees;
+
+USE the_blunder;
+SELECT MIN(ID)
+	FROM 
+	(
+SELECT TOP (50) PERCENT ID 
+	FROM employees
+	ORDER BY ID DESC
+	)
+	employees;
+
+--Ok,
+--I am getting some conflicting answers based on
+--my intuition.
+
+--means that I need to work on my intuition.
+--which is what I am doing right now.
