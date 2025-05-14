@@ -1415,7 +1415,7 @@ SELECT *
 --now, let me slowly build up the queries 
 
 USE the_blunder;
-SELECT TOP (50) PERCENT ID 
+SELECT TOP (50) PERCENT ID AS 'TOP (50) PERCENT ASC'
 	FROM employees
 	ORDER BY ID ASC;
 
@@ -1433,7 +1433,7 @@ SELECT TOP (50) PERCENT ID
 --I am thinking that I can
 
 USE the_blunder;
-SELECT TOP ( 50 ) PERCENT ID
+SELECT TOP ( 50 ) PERCENT ID AS 'TOP (50) PERCENT ID DESC'
 	FROM employees
 	ORDER BY ID DESC;
 
@@ -1441,6 +1441,45 @@ SELECT TOP ( 50 ) PERCENT ID
 --so then do I just max and do a UNION of them?
 
 --I for get how UNIONs work.
+
+--USE the_blunder;
+--SELECT MAX(ID) AS 'MAX (ID) ASC'
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT ID 
+--	FROM employees
+--	ORDER BY ID ASC
+--	)
+--	employees;
+
+--USE the_blunder;
+--SELECT MIN(ID)
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT ID 
+--	FROM employees
+--	ORDER BY ID DESC
+--	)
+--	employees;
+
+--Ok,
+--I am getting some conflicting answers based on
+--my intuition.
+
+--means that I need to work on my intuition.
+--which is what I am doing right now.
+
+--------------------------------------05 13 2025----------------------------------------------------
+
+--So,
+--right now
+--the only thing that is coming to me is to do a UNION
+--will it work?
+
+--let me check the book.
+
+--I am worng in my understanding of what a UNION is and I don't belive it can help me here
+--now that I have read the book.
 
 USE the_blunder;
 SELECT MAX(ID) AS 'MAX (ID) ASC'
@@ -1450,10 +1489,8 @@ SELECT TOP (50) PERCENT ID
 	FROM employees
 	ORDER BY ID ASC
 	)
-	employees;
-
-USE the_blunder;
-SELECT MIN(ID)
+	employees
+SELECT MIN(ID) AS 'MIN (ID) DESC'
 	FROM 
 	(
 SELECT TOP (50) PERCENT ID 
@@ -1461,10 +1498,16 @@ SELECT TOP (50) PERCENT ID
 	ORDER BY ID DESC
 	)
 	employees;
+-----------------------------------------------------------------------
+USE the_blunder;
+SELECT MAX(ASCENDING)--, MIN(ID)
+	FROM 
+	(
+SELECT TOP (50) PERCENT ID AS ASCENDING
+	FROM employees
+	ORDER BY ID ASC
+	)
+	employees;
 
---Ok,
---I am getting some conflicting answers based on
---my intuition.
-
---means that I need to work on my intuition.
---which is what I am doing right now.
+--Totally lost.
+	
