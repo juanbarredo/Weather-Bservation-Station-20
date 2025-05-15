@@ -1499,15 +1499,77 @@ SELECT TOP (50) PERCENT ID
 	)
 	employees;
 -----------------------------------------------------------------------
-USE the_blunder;
-SELECT MAX(ASCENDING)--, MIN(ID)
-	FROM 
-	(
-SELECT TOP (50) PERCENT ID AS ASCENDING
-	FROM employees
-	ORDER BY ID ASC
-	)
-	employees;
+--USE the_blunder;
+--SELECT MAX(ASCENDING)--, MIN(ID)
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT ID AS ASCENDING
+--	FROM employees
+--	ORDER BY ID ASC
+--	)
+--	employees;
 
 --Totally lost.
+
+----------------------------------05 15 2025-----------------------------------------------
+
+--so,
+--I guess I am interested in exploring.
+
+--what can I do?
+
+--I might need to find a new way to solve this?
+
+--I can get
+--is there a way to join  these two?
+
+--from within one table, a join?
+
+--let me look into it?
+
+--like I join table TOP (50) PERCENT ID DESC and
+--table TOP (50) PERCENT ID ASC.
+
+--Can I make these two into their own?
+
+--I need to read up on the subject to catch myself there
+--but I do not think that I can make it work.
+
+--what is then for instance.
+--the way that the tables are joined doesn't arrage them.
+
+--but can I?
+
+--I will look in the book.
+
+--maybe there is a way.
+
+--USE the_blunder;
+--SELECT TOP (50) PERCENT ID
+--	FROM employees JOIN employees DESCENDING
+--	ON employees.ID = DESCENDING.ID
+--	ORDER BY ID ASC;
 	
+--i feel like it isn't making sense.
+--I can't seem to half build it.
+--this may be what I work on the next time I work on this problem.
+
+--I need to get a basic self-join done.
+--that way I can build on it.
+
+--what will be the self join.
+--just a * query
+
+USE the_blunder;
+SELECT *
+	FROM employees JOIN employees DESCENDING
+	ON employees.ID = DESCENDING.ID;
+
+--ok, there it is in all it's glory.
+
+--a self join.
+--is this what self joins were meant for?
+--ok,
+--I now may be able to do this through a subquery?
+
+--"the same is tre for the column names in the join condition of a SELECT statement." page 190.
