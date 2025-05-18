@@ -1572,4 +1572,44 @@ SELECT *
 --ok,
 --I now may be able to do this through a subquery?
 
---"the same is tre for the column names in the join condition of a SELECT statement." page 190.
+--"the same is true for the column names in the join condition of a SELECT statement." page 190.
+
+---------------------------------05 18 2025------------------------------------------
+
+--ok!
+
+--I believe that for now what I am going to work on is 
+--giving the ID column of one of the join tables a different name
+--so that I can make one asc and the other desc.
+
+USE the_blunder;
+SELECT employees.ID, DESCENDING.ID
+	FROM employees JOIN employees DESCENDING
+	ON employees.ID = DESCENDING.ID
+	ORDER BY employees.ID ASC, DESCENDING.ID DESC;
+
+--let me see if I can do multiple ORDER BY columns in one select statement's ORDER BY clause.
+--ok,
+--I tried line 1589 and it didn't work
+
+--What might I need to work on next?
+--I am thinking that I will need to do a subquery.
+
+USE the_blunder;
+SELECT TOP(50) PERCENT employees.ID, DESCENDING.ID
+	FROM 
+	(
+	SELECT TOP(50) PERCENT DESCENDING.ID
+	FROM employees DESCENDING
+	ORDER BY DESCENDING.ID DESC
+	)
+	employees JOIN employees DESCENDING
+	ON employees.ID = DESCENDING.ID
+	ORDER BY employees.ID ASC;
+
+--the subquery didn't seem to catch.
+--the way that both tables are lumped together is weird.
+
+--Ok,
+--now the next issue is getting one column to ASCEND while the other DESCENDS.
+--I may need to do a google search into this one.
