@@ -1319,16 +1319,16 @@
 --Ok,
 
 --I am now thinking that what I need to do is to is to collapse a subquery into with the main query.
-USE Weather_Observation_Station_2;
-SELECT TOP 2 WITH TIES WHATEVER
-			FROM 
-			(
-			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
-				FROM STATION
-				ORDER BY LAT_N ASC
-			)
-		STATION
-	ORDER BY WHATEVER DESC;
+--USE Weather_Observation_Station_2;
+--SELECT TOP 2 WITH TIES WHATEVER
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N WHATEVER
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION
+--	ORDER BY WHATEVER DESC;
 
 --How can I get the TOP 2 OVER the TOP 50 PERCENT in one SELECT statement
 --instead of the two I am using in lines 1322 - 1331?
@@ -1346,33 +1346,33 @@ SELECT TOP 2 WITH TIES WHATEVER
 
 --let me get that down first.
 
-USE Weather_Observation_Station_2;
-IF(
-	SELECT (counted_lat_n % 2)
-		FROM
-		(
-			SELECT COUNT(LAT_N) counted_lat_n
-				FROM STATION
-		)
-		STATION) = 0
-		SELECT MAX (LAT_N)
-			FROM 
-			(
-			SELECT TOP (50) PERCENT WITH TIES LAT_N
-				FROM STATION
-				ORDER BY LAT_N ASC
-			)
-		STATION
-		ELSE BEGIN
-		SELECT MAX (LAT_N) AS 'MEDIAN OF ODD COUNTED COLUMN'
-			FROM 
-			(
-			SELECT TOP (50) PERCENT WITH TIES LAT_N
-				FROM STATION
-				ORDER BY LAT_N ASC
-			)
-		STATION
-		END
+--USE Weather_Observation_Station_2;
+--IF(
+--	SELECT (counted_lat_n % 2)
+--		FROM
+--		(
+--			SELECT COUNT(LAT_N) counted_lat_n
+--				FROM STATION
+--		)
+--		STATION) = 0
+--		SELECT MAX (LAT_N)
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION
+--		ELSE BEGIN
+--		SELECT MAX (LAT_N) AS 'MEDIAN OF ODD COUNTED COLUMN'
+--			FROM 
+--			(
+--			SELECT TOP (50) PERCENT WITH TIES LAT_N
+--				FROM STATION
+--				ORDER BY LAT_N ASC
+--			)
+--		STATION
+--		END
 
 --Ok,
 --Amazing.
@@ -1405,19 +1405,19 @@ IF(
 
 --I think I need to work on a data set that has an even number values.
 
-USE the_blunder;
-SELECT *
-	FROM employees;
+--USE the_blunder;
+--SELECT *
+--	FROM employees;
 
 --ok, the table "employees" from the the database "the_blunder"
 --has 20 rows.
 
 --now, let me slowly build up the queries 
 
-USE the_blunder;
-SELECT TOP (50) PERCENT ID AS 'TOP (50) PERCENT ASC'
-	FROM employees
-	ORDER BY ID ASC;
+--USE the_blunder;
+--SELECT TOP (50) PERCENT ID AS 'TOP (50) PERCENT ASC'
+--	FROM employees
+--	ORDER BY ID ASC;
 
 --ok,
 --I am completely stuck.
@@ -1432,10 +1432,10 @@ SELECT TOP (50) PERCENT ID AS 'TOP (50) PERCENT ASC'
 
 --I am thinking that I can
 
-USE the_blunder;
-SELECT TOP ( 50 ) PERCENT ID AS 'TOP (50) PERCENT ID DESC'
-	FROM employees
-	ORDER BY ID DESC;
+--USE the_blunder;
+--SELECT TOP ( 50 ) PERCENT ID AS 'TOP (50) PERCENT ID DESC'
+--	FROM employees
+--	ORDER BY ID DESC;
 
 --Ok,
 --so then do I just max and do a UNION of them?
@@ -1481,23 +1481,23 @@ SELECT TOP ( 50 ) PERCENT ID AS 'TOP (50) PERCENT ID DESC'
 --I am worng in my understanding of what a UNION is and I don't belive it can help me here
 --now that I have read the book.
 
-USE the_blunder;
-SELECT MAX(ID) AS 'MAX (ID) ASC'
-	FROM 
-	(
-SELECT TOP (50) PERCENT ID 
-	FROM employees
-	ORDER BY ID ASC
-	)
-	employees
-SELECT MIN(ID) AS 'MIN (ID) DESC'
-	FROM 
-	(
-SELECT TOP (50) PERCENT ID 
-	FROM employees
-	ORDER BY ID DESC
-	)
-	employees;
+--USE the_blunder;
+--SELECT MAX(ID) AS 'MAX (ID) ASC'
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT ID 
+--	FROM employees
+--	ORDER BY ID ASC
+--	)
+--	employees
+--SELECT MIN(ID) AS 'MIN (ID) DESC'
+--	FROM 
+--	(
+--SELECT TOP (50) PERCENT ID 
+--	FROM employees
+--	ORDER BY ID DESC
+--	)
+--	employees;
 -----------------------------------------------------------------------
 --USE the_blunder;
 --SELECT MAX(ASCENDING)--, MIN(ID)
@@ -1582,11 +1582,11 @@ SELECT *
 --giving the ID column of one of the join tables a different name
 --so that I can make one asc and the other desc.
 
-USE the_blunder;
-SELECT employees.ID, DESCENDING.ID
-	FROM employees JOIN employees DESCENDING
-	ON employees.ID = DESCENDING.ID
-	ORDER BY employees.ID ASC, DESCENDING.ID DESC;
+--USE the_blunder;
+--SELECT employees.ID, DESCENDING.ID
+--	FROM employees JOIN employees DESCENDING
+--	ON employees.ID = DESCENDING.ID
+--	ORDER BY employees.ID ASC, DESCENDING.ID DESC;
 
 --let me see if I can do multiple ORDER BY columns in one select statement's ORDER BY clause.
 --ok,
@@ -1595,17 +1595,17 @@ SELECT employees.ID, DESCENDING.ID
 --What might I need to work on next?
 --I am thinking that I will need to do a subquery.
 
-USE the_blunder;
-SELECT TOP(50) PERCENT employees.ID, DESCENDING.ID
-	FROM 
-	(
-	SELECT TOP(50) PERCENT DESCENDING.ID
-	FROM employees DESCENDING
-	ORDER BY DESCENDING.ID DESC
-	)
-	employees JOIN employees DESCENDING
-	ON employees.ID = DESCENDING.ID
-	ORDER BY employees.ID ASC;
+--USE the_blunder;
+--SELECT TOP(50) PERCENT employees.ID, DESCENDING.ID
+--	FROM 
+--	(
+--	SELECT TOP(50) PERCENT DESCENDING.ID
+--	FROM employees DESCENDING
+--	ORDER BY DESCENDING.ID DESC
+--	)
+--	employees JOIN employees DESCENDING
+--	ON employees.ID = DESCENDING.ID
+--	ORDER BY employees.ID ASC;
 
 --the subquery didn't seem to catch.
 --the way that both tables are lumped together is weird.
@@ -1613,3 +1613,47 @@ SELECT TOP(50) PERCENT employees.ID, DESCENDING.ID
 --Ok,
 --now the next issue is getting one column to ASCEND while the other DESCENDS.
 --I may need to do a google search into this one.
+
+----------------------------------------------05 19 2025-----------------------------------------
+
+--I am excited because I may have found an answer
+
+--but I need to clean up my previous queries out to make this one stand out.
+
+--USE the_blunder;
+--SELECT *
+--	FROM employees JOIN employees DESCENDING
+--	ON employees.ID = DESCENDING.ID;
+
+--ok,
+--let me instead get confortable with a simpler query
+
+USE the_blunder;
+SELECT ID, Name
+	FROM employees
+	ORDER BY ID DESC, Name;
+
+--from stackoverflow by user 6269864
+--ORDER BY column1 DESC, column2
+--this sorts everything column1 (descending) first,
+--and then by column2 (ascending, 
+--which is the default)
+--whenever the column1 
+--fields for two or more rows are equal.
+--------end of citation
+
+--then,
+--I believe that what I want in not possible.
+--I might be able to do it if I use linear algebra.
+
+--what would be the name but I think I have to
+--separate the two columns in order to do the operation
+--on each that I can't seem to be able to do it through
+--ORDER BY clause.
+
+--le sigh
+--I found something new to try
+
+--a row_number() over(order by y desc) 
+
+--maybe not.
