@@ -1657,3 +1657,44 @@ SELECT ID, Name
 --a row_number() over(order by y desc) 
 
 --maybe not.
+
+------------------------------05 22 2025----------------------------------
+
+--finally back 
+
+--am excited to be here.
+
+--I will work today/tonight on this pomodoro
+--on the window construct previously discussed.
+
+--row_number() over(order by y desc) 
+
+USE the_blunder;
+SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
+	FROM employees;
+
+--The query from lines 1672 to 1674 is giving me such an interesting result set.
+
+--I am now thinking that I might need to turn it into a subquery.
+--but I think that is where I will have to add complexity 
+--somehow I need to get now the TOP ( 50 ) PERCENT ID
+--yeah, this is where I am completely stumped.
+--I need to get back to this.
+
+--or where else can I safely explore this new result set.
+
+--USE the_blunder;
+--SELECT TOP ( 50 ) PERCENT ID OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
+--	FROM employees;
+
+	--Ok,
+	--the above query is giving me an error.
+
+	--Msg 156, Level 15, State 1, Line 1687
+    --Incorrect syntax near the keyword 'OVER'.
+
+--so then yeah,
+--I would have to come back to this.
+
+--I am actually sweating from how tired I am.
+--love it.
