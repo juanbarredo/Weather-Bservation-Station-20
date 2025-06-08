@@ -1732,3 +1732,29 @@ SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
 --I need to learn to relabel columns.
 
 --I will look at that.
+
+---------------------------------------------------06 08 2025-----------------------------------------------
+
+--I am finally back!
+
+--I thought about it yesterday.
+
+--And I think I figured out that I can just do linear algebra.
+
+--But I still need to learn to relabel columns
+--I will look at that now.
+
+--I have looked at it and it seems that I can just use ALIASES.
+
+--I tried to use them but maybe my approach wasn't right.
+
+--so now I am unsure how to proceed.
+
+--I think I need to look at the operation that flips over a column.
+
+--ok, so I need to look at what in linear algebra is called 'flipping over a column so the order is reversed'
+--even my little explanation in line 1755 doesn't mean anything.
+
+--I am going to need to look at a book and see what they mean.
+
+--maybe just flip through a book until I run into it.
