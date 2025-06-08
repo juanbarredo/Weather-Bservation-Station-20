@@ -1628,10 +1628,10 @@ SELECT *
 --ok,
 --let me instead get confortable with a simpler query
 
-USE the_blunder;
-SELECT ID, Name
-	FROM employees
-	ORDER BY ID DESC, Name;
+--USE the_blunder;
+--SELECT ID, Name
+--	FROM employees
+--	ORDER BY ID DESC, Name;
 
 --from stackoverflow by user 6269864
 --ORDER BY column1 DESC, column2
@@ -1698,3 +1698,37 @@ SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
 
 --I am actually sweating from how tired I am.
 --love it.
+
+--------------------------------------05 25 2025------------------------------------
+
+--this is going to be a tough next week to be consistently workin on this.
+
+--i think I have to make the TOP (50) PERCENT  the subquery.
+
+--USE the_blunder;
+--SELECT TOP ( 50 ) PERCENT ID AS 'TOP ( 50 ) PERCENT ID ASC'
+--			TOP ( 50 ) PERCENT ID AS 'TOP ( 50 ) PERCENT ID DESC'
+--	FROM employees
+--	ORDER BY ID ASC;
+
+--I am completely lost
+--I thought I had something to build upon 
+--but there is really nothing.
+
+--I think I am running into this deterministic vs non-deterministic stuff
+--I need to get a better handle on it
+--but I also feel like it isn't exactly needed at this point in time.
+
+--so what can I do?
+
+--can I look at an answer?
+
+--I don't want to.
+
+--I want to solve this myself.
+
+--so,
+--what/where do I look?
+--I need to learn to relabel columns.
+
+--I will look at that.
