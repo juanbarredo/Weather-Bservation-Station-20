@@ -1669,9 +1669,9 @@ SELECT *
 
 --row_number() over(order by y desc) 
 
-USE the_blunder;
-SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
-	FROM employees;
+--USE the_blunder;
+--SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
+--	FROM employees;
 
 --The query from lines 1672 to 1674 is giving me such an interesting result set.
 
@@ -1758,3 +1758,66 @@ SELECT MAX(ID) OVER ( ORDER BY ID DESC ), MIN (ID) OVER ( ORDER BY ID ASC )
 --I am going to need to look at a book and see what they mean.
 
 --maybe just flip through a book until I run into it.
+
+---------------------------06 09 2025--------------------------------------------------
+
+--I am going to review now.
+
+--yes.
+
+--I found an approach through a youtube video that I need to copy down.
+
+--but it used an inner join.
+
+--it reverses the order of or it does a 
+--it reverses order on column values.
+
+--I looked at stuff over the time between.
+
+--I wonder if I will need to do a detaour just for this example?
+
+
+--select a.Id, b.Name
+--from SwitchTAbleColumnValues as a
+--inner join
+--(
+--select *, ROW_NUMBER(OVER)(ORDER BY ID DESC) AS RID
+--FROM SWITCHTABVLECOLUMNVALUES
+--) AS B
+--ON A.ID=B.RID
+
+--so,
+--how can I craft such a query as from lines 1780 t0 1787 for my example?
+
+--I have two rows.
+--they are the same row but one gets flipped and the other doesn't.
+
+--it is the latitude one?
+
+--query the median of the Northern Latitudes (LAT_N)
+
+--right.
+
+--ok, 
+--I may already have done much of this or actually
+
+USE Weather_Observation_Station_2;
+SELECT * 
+	FROM STATION;
+
+USE Weather_Observation_Station_2;
+SELECT *
+	FROM STATION T1 INNER JOIN STATION T2
+		ON T1.LAT_N = T2.LAT_N;
+
+--Ok,
+--yeah, I really need to learn more about joins but I honestly haven't been using them that much.
+
+--really glad I am taking the time to look at this query.
+--the one from lines 1780 t0 1787.
+
+--I need to sit with this honestly.
+
+--next time I want to flesh out T2 to have the reverse order join
+--the way where a subquery can be injected is insane.
+--it can be injected anywhere lol.
