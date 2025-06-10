@@ -1560,10 +1560,10 @@
 --what will be the self join.
 --just a * query
 
-USE the_blunder;
-SELECT *
-	FROM employees JOIN employees DESCENDING
-	ON employees.ID = DESCENDING.ID;
+--USE the_blunder;
+--SELECT *
+--	FROM employees JOIN employees DESCENDING
+--	ON employees.ID = DESCENDING.ID;
 
 --ok, there it is in all it's glory.
 
@@ -1801,9 +1801,9 @@ SELECT *
 --ok, 
 --I may already have done much of this or actually
 
-USE Weather_Observation_Station_2;
-SELECT * 
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT * 
+--	FROM STATION;
 
 USE Weather_Observation_Station_2;
 SELECT *
@@ -1821,3 +1821,53 @@ SELECT *
 --next time I want to flesh out T2 to have the reverse order join
 --the way where a subquery can be injected is insane.
 --it can be injected anywhere lol.
+
+--------------------------------06 10 2025----------------------------------------
+
+--ok,
+
+--I am going to work on fleshing out T2.
+
+--(
+--select *, ROW_NUMBER(OVER)(ORDER BY ID DESC) AS RID
+--FROM SWITCHTABVLECOLUMNVALUES
+--)
+
+--let me see if I can just reverse 
+
+--I am getting confused over how to make sense
+--I feel like I am already loosing sense
+
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N DESC;
+
+--Ok, the above query from lines 1842 to 1845 looks good
+
+--USE Weather_Observation_Station_2;
+--SELECT TOP(50) PERCENT LAT_N, LAT_N_DESC
+--	FROM STATION T1 INNER JOIN 
+--	(
+--		SELECT TOP(50) PERCENT LAT_N AS LAT_N_DESC
+--			FROM STATION
+--			ORDER BY LAT_N DESC
+--	) T2
+--	ON T1.LAT_N = T2.LAT_N_DESC;
+
+--Ok,
+--with the query from lines 1849 to 1857
+--I think I will need to manipulate the id as reverse id as shown in query.
+
+--(
+--select *, ROW_NUMBER(OVER)(ORDER BY ID DESC) AS RID
+--FROM SWITCHTABVLECOLUMNVALUES
+--)
+
+--I am going to need to work on this specific query
+--the one I am copying over and over again from lines 1863 to 1866
+--which I got from a youtube video.
+
+--what is ROW_NUMBER() function?
+
