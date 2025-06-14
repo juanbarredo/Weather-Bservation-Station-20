@@ -1871,3 +1871,71 @@ SELECT *
 
 --what is ROW_NUMBER() function?
 
+--------------------------------06 14 2025-------------------------
+
+--I am going to work on catching up.
+
+--
+
+--USE Weather_Observation_Station_2;
+--SELECT *, ROW_NUMBER() OVER (ORDER BY ID DESC) AS RID
+--	FROM STATION;
+
+--I feel really good to have gotten this far.
+--I need to feel it over now.
+
+--let me get it for lat_n
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS RLAT_N
+	FROM STATION;
+
+--now I am seeing that maybe this isn't the way
+--but it is a way
+
+--I understand ROW_NUMBER () better.
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N, LAT_N OVER (ORDER BY LAT_N DESC) AS RLAT_N
+--	FROM STATION;
+
+--USE Weather_Observation_Station_2;
+--SELECT TOP(50) PERCENT ********LAT_N*********, LAT_N_DESC
+--	FROM STATION T1 INNER JOIN 
+--	(
+--		SELECT LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS LAT_N_DESC
+--		FROM STATION
+--	) T2
+--	ON T1.LAT_N = T2.LAT_N_DESC;
+
+	--Msg 209, Level 16, State 1, Line 1903
+	--Ambiguous column name 'LAT_N'.
+
+--The error I am getting is very insteresting.
+--challenges me to have to rethink everything.
+
+--I need to sit and thkn about another way to solve this
+
+--I need to get because I need to solve for an even number of values stacked
+
+--I will need to figure out another way to reach the median value.
+
+--I keep coming up with my previous idea but I just can't seem to be able to create it.
+
+--maybe I need to look at column names and ambiguity.
+
+--I think
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N, LAT_N_DESC
+	FROM STATION T1 INNER JOIN 
+	(
+		SELECT ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS LAT_N_DESC
+		FROM STATION
+	) T2
+	ON T1.LAT_N = T2.LAT_N_DESC;
+
+	--yeah,
+	--i need to work on this issue
+	--i solved the problem with column name ambiguity but maybe not
+	--i am getting an empty result set.
