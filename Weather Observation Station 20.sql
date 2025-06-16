@@ -1939,3 +1939,18 @@ SELECT LAT_N, LAT_N_DESC
 	--i need to work on this issue
 	--i solved the problem with column name ambiguity but maybe not
 	--i am getting an empty result set.
+
+-----------------------------------------06 16 2025-----------------------------------------
+
+--I am very excited to work on this right now
+
+--I believe that I need to work on the dependecies regarding whether a function is deterministic or not.
+
+--what does determinism mean again?
+
+USE Weather_Observation_Station_2;
+SELECT OBJECTPROPERTY(OBJECT_ID ('LAT_N'), 'IsDeterministic')
+	FROM STATION;
+
+--I think I will break this up and do a determinism study
+--but I am unsure if it will help.
