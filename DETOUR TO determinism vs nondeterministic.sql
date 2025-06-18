@@ -32,3 +32,36 @@ SELECT ID
 	--i think for sure adventure works
 
 	--SELECT is famously non-deterministic.
+
+----------------------------------06 17 2025--------------------------------
+
+--so,
+--I am lost and this is the next lead.
+
+USE sample;
+SELECT *
+	FROM project_p2;
+
+USE sample;
+SELECT GETDATE() 
+	FROM project_p2;
+
+	--Ok,
+	--so,
+	--I guess I tested GETDATE() and it does indeed get me a new date everytime.
+
+
+--I have run out of time.
+--I am certainly stuck.
+
+--I am glad to be spending my time here though.
+
+--Where else can I go?
+--What are the types of functions?
+--aggregate is one for sure.
+--seems I can't quite do that.
+--can I 
+
+--a mean is ordered through the DESC or ASC.
+--does that affect its determinism.
+--I need to figure that out next time.
