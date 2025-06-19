@@ -65,3 +65,49 @@ SELECT GETDATE()
 --a mean is ordered through the DESC or ASC.
 --does that affect its determinism.
 --I need to figure that out next time.
+
+--------------------------------------------06 19 2025----------------------------------
+
+--Alright,
+
+--So,
+
+--I am exploring the beginning of my determinism on the current problem
+--I am surprised to find out that the SELECT TOP ( 50 ) PERCENT LAT_N?
+
+USE Weather_Observation_Station_2;
+SELECT TOP ( 50) PERCENT LAT_N 
+	FROM STATION;
+
+USE Weather_Observation_Station_2;
+SELECT TOP ( 50) PERCENT LAT_N 
+	FROM STATION
+	ORDER BY LAT_N ASC;
+
+--does this mean that TOP ( ) is nondeterministic?
+
+--is ID a stable?
+
+--it is iff it has been assigned as a key column.
+
+--we can assume here that it is.
+
+--we can test these assumptions
+
+--USE Weather_Observation_Station_2;
+--SELECT UNIQUE(ID) 
+--	FROM STATION;
+
+--I am learning too much right now.
+
+--colums are sets.  and I guess by definition sets have no order.
+--I think that is why SQL "does not guarantee a result set is ordered unless an ORDER BY clause is used"
+
+--ok, 
+--this is serious business.
+
+--even finding unique values is hard.
+
+--need to think further
+--enjoying going deeper into this problem
+--challenging myself.
