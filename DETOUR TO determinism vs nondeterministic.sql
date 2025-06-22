@@ -111,3 +111,33 @@ SELECT TOP ( 50) PERCENT LAT_N
 --need to think further
 --enjoying going deeper into this problem
 --challenging myself.
+
+---------------------------------06 22 2025---------------------------
+
+--I am completely stumped
+--I need to keep struggling
+
+--so,
+--I guess the ORDER BY is really only for the displayed result set.
+
+--I am thinking about using the OVER () function but I can't quite get a good idea of how to partition?
+--I think the main take away that I am getting at is that this is an aggregate operation.
+--I previously was thinking that the result set or the SELECT statement line is where everything happens.
+
+--but I don't need a result set to then narrow I need the result set to be the result already.
+
+--still,
+
+--how can I get the 
+--I did a quick youtube video search and got the idea that there are many ways to solve it.
+
+--so, I just need to keep working ont his.
+
+--alternatively, I may just watch all those videos and try one of the solutions.
+--I can't imagine 
+--I just don't know how to use all the functions.
+--some get very complicated.
+
+--I may spend the rest of the day watching videos.
+
+--this is very complicated
