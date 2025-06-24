@@ -1805,10 +1805,10 @@
 --SELECT * 
 --	FROM STATION;
 
-USE Weather_Observation_Station_2;
-SELECT *
-	FROM STATION T1 INNER JOIN STATION T2
-		ON T1.LAT_N = T2.LAT_N;
+--USE Weather_Observation_Station_2;
+--SELECT *
+--	FROM STATION T1 INNER JOIN STATION T2
+--		ON T1.LAT_N = T2.LAT_N;
 
 --Ok,
 --yeah, I really need to learn more about joins but I honestly haven't been using them that much.
@@ -1886,9 +1886,9 @@ SELECT *
 
 --let me get it for lat_n
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS RLAT_N
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS RLAT_N
+--	FROM STATION;
 
 --now I am seeing that maybe this isn't the way
 --but it is a way
@@ -1926,14 +1926,14 @@ SELECT LAT_N, ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS RLAT_N
 
 --I think
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N, LAT_N_DESC
-	FROM STATION T1 INNER JOIN 
-	(
-		SELECT ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS LAT_N_DESC
-		FROM STATION
-	) T2
-	ON T1.LAT_N = T2.LAT_N_DESC;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N, LAT_N_DESC
+--	FROM STATION T1 INNER JOIN 
+--	(
+--		SELECT ROW_NUMBER() OVER (ORDER BY LAT_N DESC) AS LAT_N_DESC
+--		FROM STATION
+--	) T2
+--	ON T1.LAT_N = T2.LAT_N_DESC;
 
 	--yeah,
 	--i need to work on this issue
@@ -1948,9 +1948,57 @@ SELECT LAT_N, LAT_N_DESC
 
 --what does determinism mean again?
 
-USE Weather_Observation_Station_2;
-SELECT OBJECTPROPERTY(OBJECT_ID ('LAT_N'), 'IsDeterministic')
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT OBJECTPROPERTY(OBJECT_ID ('LAT_N'), 'IsDeterministic')
+--	FROM STATION;
 
 --I think I will break this up and do a determinism study
 --but I am unsure if it will help.
+
+-------------------------------06 23 2025--------------------------------
+
+--and with this
+--I have decided to work on watching a youtube video that is teaching a new function for me.
+
+--I learned from this video that I need to work on CASE statements
+--I have learned that this was essentially what I was trying to do with the IF statements.
+
+--the video by the YouTube channel Essential SQL titled
+--"How to use SQL to Calculate the Median | Essential SQL"
+--has really accelerated me.
+
+--this guy is really ahead of me
+--lifetimes in fact.
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N,
+	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N ASC) OVER () MEDIAN_LAT_N
+	FROM STATION;
+
+--I am having such a let down of a moment.
+--but basically,
+--this was a function that I honestly had no idea how it works.
+--I will just need to understand this function better.
+
+--I am honestly besides myself at the moment.
+
+-- i suppose the next thing I need to do is to just write it up and format it for hackerrank.com
+--I need to get the rounding up
+
+--I also need to check this by hand and see if it really worked.
+--if I typed it up correctly at least.
+
+USE Weather_Observation_Station_2;
+SELECT COUNT(LAT_N)
+	FROM STATION;
+
+USE Weather_Observation_Station_2;
+SELECT LAT_N
+	FROM STATION
+	ORDER BY LAT_N ASC;
+
+SELECT (83.4994659423828 + 83.8913040161133)/2;
+
+--Well, it isn't really giving me what I expect to be the median.
+--I will have to keep working on this
+--definitely keep watching the video.
