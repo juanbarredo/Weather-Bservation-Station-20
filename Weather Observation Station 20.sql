@@ -1970,10 +1970,10 @@
 --this guy is really ahead of me
 --lifetimes in fact.
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N,
-	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N ASC) OVER () MEDIAN_LAT_N
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N,
+--	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N ASC) OVER () MEDIAN_LAT_N
+--	FROM STATION;
 
 --I am having such a let down of a moment.
 --but basically,
@@ -1988,17 +1988,71 @@ SELECT LAT_N,
 --I also need to check this by hand and see if it really worked.
 --if I typed it up correctly at least.
 
-USE Weather_Observation_Station_2;
-SELECT COUNT(LAT_N)
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT COUNT(LAT_N)
+--	FROM STATION;
 
-USE Weather_Observation_Station_2;
-SELECT LAT_N
-	FROM STATION
-	ORDER BY LAT_N ASC;
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N ASC;
 
-SELECT (83.4994659423828 + 83.8913040161133)/2;
+SELECT (83.4994659423828 + 83.8913040161133)/2 AS MEDIAN_LAT_N;
 
 --Well, it isn't really giving me what I expect to be the median.
 --I will have to keep working on this
 --definitely keep watching the video.
+
+-------------------------------06 26 2025-----------------------------
+
+--ok,
+--I want to look at the sum part of the subquery from the video from essential sql youtube chanel.
+
+USE Weather_Observation_Station_2;
+SELECT SUM(LAT_N) AS SUM_LAT_N
+	FROM STATION;
+
+	--Ok,
+	--I think I just don't get how the PERCENTILE_CONT() function works..
+
+--USE Weather_Observation_Station_2;
+--SELECT SUM_LAT_N, PERCENTILE_CONT(.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER() MEDIAN_LAT_N
+--	FROM(
+--	SELECT SUM(LAT_N) AS SUM_LAT_N
+--		FROM STATION) 
+--		STATION;
+
+USE Weather_Observation_Station_2;
+SELECT * 
+	FROM STATION;
+
+	--Yeah,
+	--well,
+	--this is as good a time as any to work on learning this really interesting function.
+
+USE Weather_Observation_Station_2;
+SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+	FROM STATION
+	GROUP BY ID;
+	
+	--Wow,
+	--I totally forgot about the GROUP BY when using an aggregate function in the SELECT statement.
+
+USE Weather_Observation_Station_2;
+SELECT ID, SUM_LAT_N,
+	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
+	FROM (
+	SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+	FROM STATION
+	GROUP BY ID)
+	STATION;
+
+	--I am unsure of the result set.
+	--I previously calculated the median from lines 2000.
+	--83.695384979248050
+	--but the latest version of my copy of Essential SQL
+	--says that the median is 83.8913040161133
+
+	--I will need to make sure my version in line 2000 is correct before proceeding.
+	--otherwise, I can just work on getting the rounding correct.
+	--ok, watching the video.  I think I just need to adjust my query at line 2000.
