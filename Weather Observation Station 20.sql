@@ -2056,3 +2056,59 @@ SELECT ID, SUM_LAT_N,
 	--I will need to make sure my version in line 2000 is correct before proceeding.
 	--otherwise, I can just work on getting the rounding correct.
 	--ok, watching the video.  I think I just need to adjust my query at line 2000.
+
+---------------------------------07 03 2025-------------------------------
+
+--super glad to be back
+--I think I am supposed to explore the function 
+
+--but do I instead just want to turn it in?
+
+--I think I do
+--I think I am done trying to explore too much.
+
+--Let me see if I can get anywhere with my above desire.  the desire in line 2068.
+
+USE Weather_Observation_Station_2;
+SELECT *
+	FROM 
+			(
+			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+			FROM STATION
+			GROUP BY ID
+			) d;
+
+USE Weather_Observation_Station_2;
+SELECT ID, SUM_LAT_N, 
+		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
+	FROM 
+			(
+			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+			FROM STATION
+			GROUP BY ID
+			) d;
+
+
+--USE Weather_Observation_Station_2;
+--SELECT ID, LAT_N, 
+--		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER () MEDIAN_LAT_N
+--	FROM 
+--			(
+--			SELECT ID, LAT_N --SO I NEEd the sum(lat_n) after all.
+--			FROM STATION
+--			GROUP BY ID
+--			) d;
+
+-- I am trying to see the logic of the function.
+-- I am unsure why the line 2097 needs to be SELECT ID, SUM(LAT_N)
+
+--now I want to keep exoploring the function.
+
+USE Weather_Observation_Station_2;
+SELECT ID, LAT_N, 
+		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY lat_n) OVER () MEDIAN_LAT_N
+	FROM STATION;
+
+	--so it looks like I don't need the drive table after all.  the subquery to me.  to my understanding.
+
+
