@@ -1997,7 +1997,7 @@
 --	FROM STATION
 --	ORDER BY LAT_N ASC;
 
-SELECT (83.4994659423828 + 83.8913040161133)/2 AS MEDIAN_LAT_N;
+--SELECT (83.4994659423828 + 83.8913040161133)/2 AS MEDIAN_LAT_N;
 
 --Well, it isn't really giving me what I expect to be the median.
 --I will have to keep working on this
@@ -2008,9 +2008,9 @@ SELECT (83.4994659423828 + 83.8913040161133)/2 AS MEDIAN_LAT_N;
 --ok,
 --I want to look at the sum part of the subquery from the video from essential sql youtube chanel.
 
-USE Weather_Observation_Station_2;
-SELECT SUM(LAT_N) AS SUM_LAT_N
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT SUM(LAT_N) AS SUM_LAT_N
+--	FROM STATION;
 
 	--Ok,
 	--I think I just don't get how the PERCENTILE_CONT() function works..
@@ -2022,30 +2022,30 @@ SELECT SUM(LAT_N) AS SUM_LAT_N
 --		FROM STATION) 
 --		STATION;
 
-USE Weather_Observation_Station_2;
-SELECT * 
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT * 
+--	FROM STATION;
 
 	--Yeah,
 	--well,
 	--this is as good a time as any to work on learning this really interesting function.
 
-USE Weather_Observation_Station_2;
-SELECT ID, SUM(LAT_N) AS SUM_LAT_N
-	FROM STATION
-	GROUP BY ID;
+--USE Weather_Observation_Station_2;
+--SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+--	FROM STATION
+--	GROUP BY ID;
 	
 	--Wow,
 	--I totally forgot about the GROUP BY when using an aggregate function in the SELECT statement.
 
-USE Weather_Observation_Station_2;
-SELECT ID, SUM_LAT_N,
-	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
-	FROM (
-	SELECT ID, SUM(LAT_N) AS SUM_LAT_N
-	FROM STATION
-	GROUP BY ID)
-	STATION;
+--USE Weather_Observation_Station_2;
+--SELECT ID, SUM_LAT_N,
+--	PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
+--	FROM (
+--	SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+--	FROM STATION
+--	GROUP BY ID)
+--	STATION;
 
 	--I am unsure of the result set.
 	--I previously calculated the median from lines 2000.
@@ -2069,24 +2069,24 @@ SELECT ID, SUM_LAT_N,
 
 --Let me see if I can get anywhere with my above desire.  the desire in line 2068.
 
-USE Weather_Observation_Station_2;
-SELECT *
-	FROM 
-			(
-			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
-			FROM STATION
-			GROUP BY ID
-			) d;
+--USE Weather_Observation_Station_2;
+--SELECT *
+--	FROM 
+--			(
+--			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+--			FROM STATION
+--			GROUP BY ID
+--			) d;
 
-USE Weather_Observation_Station_2;
-SELECT ID, SUM_LAT_N, 
-		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
-	FROM 
-			(
-			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
-			FROM STATION
-			GROUP BY ID
-			) d;
+--USE Weather_Observation_Station_2;
+--SELECT ID, SUM_LAT_N, 
+--		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY SUM_LAT_N) OVER () MEDIAN_LAT_N
+--	FROM 
+--			(
+--			SELECT ID, SUM(LAT_N) AS SUM_LAT_N
+--			FROM STATION
+--			GROUP BY ID
+--			) d;
 
 
 --USE Weather_Observation_Station_2;
@@ -2104,11 +2104,60 @@ SELECT ID, SUM_LAT_N,
 
 --now I want to keep exoploring the function.
 
-USE Weather_Observation_Station_2;
-SELECT ID, LAT_N, 
-		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY lat_n) OVER () MEDIAN_LAT_N
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT ID, LAT_N, 
+--		PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER () MEDIAN_LAT_N
+--	FROM STATION;
 
 	--so it looks like I don't need the drive table after all.  the subquery to me.  to my understanding.
 
+--------------------------07 04 2025------------------------------------------------
 
+--so,
+--I am cleaning up and gearing up to answer the question once and for all.
+--I currently believe.
+
+--I want to order by lat_n 
+--what does that look like.
+
+--USE Weather_Observation_Station_2;
+--SELECT LAT_N
+--	FROM STATION
+--	ORDER BY LAT_N;
+
+	--Ok,
+--now I need to format to what?
+--rounding?
+--"round your answer to 4 decimal places."
+
+--CAST(ROUND(LONG_W,4) AS DECIMAL (10,4))
+
+USE Weather_Observation_Station_2;
+SELECT CAST(ROUND( PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER (), 4) AS DECIMAL (10,4))
+	FROM STATION;
+
+	--Ok,
+	--very very interesting.
+	--I think I wanted to do a drive table :)
+	--but this has allowed me to solve this on less lines.
+
+--I have started submitting and have gotten the wrong asnwer apparently.
+
+--i am playing around with the rounding but keep getting wrong answer.
+
+--I will have to stop and think about what else I could do
+--might be something that I have dealt with before and need to redo it.
+
+--otherwise, i feel confident in my answer.
+
+--should I have it display just one answer
+--just one restult set
+--one field?
+--one cell.
+--one value.
+
+--i tried that with the MAX() function but it gave me an error
+--i think this is where I will have to try to use a drive table.
+
+--if i think the problem is that my answer is too many cells 
+--
