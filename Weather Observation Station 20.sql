@@ -2132,9 +2132,9 @@
 
 --CAST(ROUND(LONG_W,4) AS DECIMAL (10,4))
 
-USE Weather_Observation_Station_2;
-SELECT CAST(ROUND( PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER (), 4) AS DECIMAL (10,4))
-	FROM STATION;
+--USE Weather_Observation_Station_2;
+--SELECT CAST(ROUND( PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER (), 4) AS DECIMAL (10,4))
+--	FROM STATION;
 
 	--Ok,
 	--very very interesting.
@@ -2161,3 +2161,17 @@ SELECT CAST(ROUND( PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER (), 4
 
 --if i think the problem is that my answer is too many cells 
 --
+
+--------------------------------07 06 2025-------------------------------------------------
+--ok,
+--i am a bit lost as to why my answer isn't enough
+--i think it is because my answer set isn't one cell or one value.
+
+USE Weather_Observation_Station_2;
+SELECT CAST(ROUND(LAT_N,4) AS DECIMAL (10,4))
+	FROM STATION
+	WHERE LAT_N IN 
+	(
+		SELECT PERCENTILE_CONT (.5) WITHIN GROUP (ORDER BY LAT_N) OVER ()
+		FROM STATION
+	);
